@@ -1,0 +1,117 @@
+/* Done */
+
+.normal_header .div_header {
+display: flex;
+justify-content: center;
+text-align: start;
+margin-top: 0em;
+height: auto;
+gap: 5em;
+padding-top: 103px;
+padding-bottom: 247px;
+z-index: -999;
+background-color: #202434;
+margin-top: 4.7em;
+}
+
+
+.normal_header ul i {
+color: rgb(255, 255, 255);
+margin-right: .5em;
+font-size: 1.4rem;
+cursor: pointer;
+}
+
+
+.normal_header h4 {
+  font-size: 1rem;
+  color: rgb(245, 222, 179);
+  margin-bottom: .5em;
+}
+
+
+.normal_header h3 { 
+font-weight: normal;
+color: rgb(255, 255, 255);
+margin-bottom: .8em;
+font-size: 1.2rem;
+}
+
+
+.normal_header .div_header .nMheader_dvLogo {
+width: 133px;
+margin-top: .9em;
+margin-left: -2.7em;
+margin-right: -3.7em;
+}
+
+
+.normal_header ul {
+line-height: 3.4em;
+}
+
+
+.normal_header ul li {
+font-size: .8rem;
+color: rgb(255, 255, 255);
+cursor: pointer;
+transition: 0.5s;
+}
+
+
+.normal_header ul li:hover {
+color: #f8a424;
+}
+
+
+@media (max-width: 925px) {
+
+.normal_header {
+height: 955px;
+margin-top: -.5em;
+}
+
+.normal_header .div_header {
+flex-direction: column;
+padding-left: 37px;
+width: 100%;
+gap: 0em;
+margin-top: -2.1em;
+}
+
+.normal_header .div_header .nMheader_dvLogo {
+width: 107px;
+margin: 2.7em 0em 1.3em 0em;
+}
+
+.normal_header ul {
+line-height: 3.1em;
+}
+
+.normal_header ul li {
+font-size: 0.8rem;
+}
+
+.normal_header ul h3 {
+font-size: 1rem;
+}
+
+}
+
+/*  */
+
+@media (min-width: 925px) and (max-width: 1519px) {
+
+.normal_header .div_header .nMheader_dvLogo {
+width: 127px;
+}
+
+.normal_header .div_header {
+gap: 2.7em;
+}
+
+.normal_header ul li {
+font-size: 0.8rem;
+}
+
+}

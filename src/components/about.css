@@ -1,0 +1,112 @@
+/* Done  */
+
+.about_flex_ {
+display: flex;
+justify-content: center;
+text-align: start;
+gap: 5.7vw;
+margin-top: 2.3em;
+margin-bottom: .5em;
+line-height: 2.7em;
+}
+
+
+.about_flex_ section {
+width: 577px;
+}
+
+
+.about_flex_ img {
+width: 457px;
+/* max-width: 100%; */
+height: auto; 
+}
+
+
+.about_flex_ h1 {
+font-size: 2rem;
+color: #10204f;
+}
+
+.about_flex_ h2 {
+font-size: 1.2rem;
+margin-top: .5em;
+color: rgb(40, 38, 38);
+}
+
+
+.about_flex_ p {
+margin-top: 0.7em;
+line-height: 2.3em;
+font-size: .9rem;
+text-align: justify;
+color: rgb(116, 115, 115);
+}
+
+
+@media (max-width: 1024px) {
+
+.about_flex_ {
+flex-direction: column;
+margin-top: 3.7em;
+margin-bottom: 3.3em;
+}
+
+.about_flex_ section {
+width: 85%;
+}
+
+
+.about_flex_ h1,
+h2 {
+text-align: center;
+}
+
+.about_flex_ h1 {
+font-size: 1.5rem;
+}
+
+.about_flex_ h2 {
+font-size: .9rem;
+text-align: center;
+}
+
+.about_flex_ img {
+width: 70vw;
+margin-left: 0;
+}
+
+.about_flex_ section p {
+margin-top: 1.2em;
+font-size: .9rem;
+}
+
+.header-ad {
+margin-top: 8.7em;
+}
+
+}
+
+/*  */
+
+@media (min-width: 1025px) and (max-width: 1500px) {
+
+.about_flex_ {
+gap: 4.3vw;
+}
+
+.about_flex_ h1 {
+font-size: 2rem;
+}
+
+.about_flex_ h2 {
+font-size: 1.2rem;
+text-align: start;
+}
+
+
+.about_flex_ p {
+font-size: .9rem;
+}
+
+}
