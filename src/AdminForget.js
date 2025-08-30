@@ -45,7 +45,7 @@ return;
 }
 
 try {
-const response = await fetch("https://namasyaa.onrender.com/resetAdminPassword", {
+const response = await fetch("https://lavonne.onrender.com/resetAdminPassword", {
 method: "POST",
 headers: {
 "Content-Type": "application/json",
