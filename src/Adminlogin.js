@@ -49,9 +49,9 @@ return;
 
 try {
 
-// https://namasyaa.onrender.com/fetchAdmin
+// https://lavonne.onrender.com/fetchAdmin
 
-const response = await fetch("https://namasyaa.onrender.com/fetchAdmin", {
+const response = await fetch("https://lavonne.onrender.com/fetchAdmin", {
 method: "POST",
 headers: { "Content-Type": "application/json" },
 body: JSON.stringify({
