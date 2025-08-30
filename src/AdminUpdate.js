@@ -60,7 +60,7 @@ e.preventDefault();
 if (!validateForm()) return;
 
 try {
-const response = await fetch("https://namasyaa.onrender.com/updateAdminSimple", {
+const response = await fetch("https://lavonne.onrender.com/updateAdminSimple", {
 method: "POST",
 headers: {
 "Content-Type": "application/json",
