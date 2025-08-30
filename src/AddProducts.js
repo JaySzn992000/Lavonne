@@ -46,7 +46,7 @@ formData.append("imagethree", productImageThree);
 
 
 try {
-const response = await fetch("https://namasyaa.onrender.com/api/add-product", {
+const response = await fetch("https://lavonne.onrender.com/api/add-product", {
 method: "POST",
 body: formData,
 });
