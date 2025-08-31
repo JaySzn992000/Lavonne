@@ -13,7 +13,6 @@ require("dotenv").config();
 const pool = require("./config");
 
 
-
 app.use(cors({
   origin: [
     'https://lavonne.vercel.app',
@@ -1858,6 +1857,7 @@ res.status(400).json({ error: "Payment verification failed" });
 // }
 // );
 
+
 const storage = multer.diskStorage({
 destination: (req, file, cb) => {
 cb(null, "public/Images");
@@ -1903,26 +1903,26 @@ const imagePathThree = req.files.imagethree
 
 const query = `
 INSERT INTO _imgproduct (
-img, name, price, file_path, sizes, file_path1, file_path2,
-file_path3, stock, description, review
+  img, name, price, file_path, sizes, file_path1, file_path2,
+  file_path3, stock, description, review
 )
 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
 `;
 
 const values = [
-category,
-name,
-price,
-imagePath,
-sizes,
-imagePathOne,
-imagePathTwo,
-imagePathThree,
-stock,
-description,
-review,
+  imagePath,
+  name,
+  price,
+  imagePathOne,
+  sizes,
+  imagePathTwo, 
+  imagePathThree,
+  category,
+  stock,
+  description,
+  review,
 ];
-
+  
 try {
 await pool.query(query, values);
 res.status(200).send("Product added successfully");
