@@ -31,7 +31,7 @@ e.preventDefault();
 
 const formData = new FormData();
 
-formData.append("img", productCategory);
+formData.append("category", productCategory);
 formData.append("name", productName);
 formData.append("price", productPrice);
 formData.append("sizes", productSizes);
@@ -44,10 +44,10 @@ formData.append("imageone", productImageOne);
 formData.append("imagetwo", productImageTwo);
 formData.append("imagethree", productImageThree);
 
-    console.log("📌 Sending Product Data:");
-  for (let pair of formData.entries()) {
-    console.log(pair[0], ":", pair[1]);
-  }
+console.log("📌 Sending Product Data:");
+for (let pair of formData.entries()) {
+console.log(pair[0], ":", pair[1]);
+}
 
 try {
 const response = await fetch("https://lavonne-c8o3.onrender.com/api/add-product", {
