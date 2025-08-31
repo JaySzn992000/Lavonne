@@ -51,6 +51,7 @@ method: "POST",
 body: formData,
 });
 
+
 if (response.ok) {
 alert("Product added successfully!");
 
