@@ -31,7 +31,7 @@ e.preventDefault();
 
 const formData = new FormData();
 
-formData.append("category", productCategory);
+formData.append("img", productCategory);
 formData.append("name", productName);
 formData.append("price", productPrice);
 formData.append("sizes", productSizes);
