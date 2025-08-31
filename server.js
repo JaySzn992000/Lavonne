@@ -16,8 +16,7 @@ const pool = require("./config");
 app.use(cors({
   origin: [
     'https://lavonne.vercel.app',
-    'https://naturalbuti-jb4y.vercel.app',
-    'https://naturalbuti-ycfw.vercel.app',
+    'http://localhost:3000',
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
@@ -696,90 +695,90 @@ res.status(500).json({ error: "Database query failed" });
 
 // from here
 
-// app.get("/fetchProductslist", (req, res) => {
-// const searchQuery = req.query.search || "";
+app.get("/fetchProductslist", (req, res) => {
+const searchQuery = req.query.search || "";
 
-// const keywords = searchQuery.toLowerCase().split(/\s+/);
-// const conditions = keywords
-// .map((keyword) => `LOWER(name) LIKE ?`)
-// .join(" AND ");
-// const advancedSearchQuery = `
-// SELECT *
-// FROM imgproduct
-// WHERE ${conditions}
-// `;
-// const advancedSearchValues = keywords.map((keyword) => `%${keyword}%`);
+const keywords = searchQuery.toLowerCase().split(/\s+/);
+const conditions = keywords
+.map((keyword) => `LOWER(name) LIKE ?`)
+.join(" AND ");
+const advancedSearchQuery = `
+SELECT *
+FROM imgproduct
+WHERE ${conditions}
+`;
+const advancedSearchValues = keywords.map((keyword) => `%${keyword}%`);
 
-// db.query(
-// advancedSearchQuery,
-// advancedSearchValues,
-// (err, advancedResults) => {
-// if (err) {
-// console.error("Error fetching data:", err.stack);
-// return res.status(500).json({ error: "Database query failed" });
-// }
+db.query(
+advancedSearchQuery,
+advancedSearchValues,
+(err, advancedResults) => {
+if (err) {
+console.error("Error fetching data:", err.stack);
+return res.status(500).json({ error: "Database query failed" });
+}
 
-// if (advancedResults.length > 0) {
-// return res.json(advancedResults);
-// }
+if (advancedResults.length > 0) {
+return res.json(advancedResults);
+}
 
-// // If no advanced results,
-// // check exact match
+// If no advanced results,
+// check exact match
 
-// const exactMatchQuery = `
-// SELECT *
-// FROM imgproduct
-// WHERE LOWER(img) = LOWER(?)
-// `;
-// const values = [searchQuery];
+const exactMatchQuery = `
+SELECT *
+FROM imgproduct
+WHERE LOWER(img) = LOWER(?)
+`;
+const values = [searchQuery];
 
-// db.query(exactMatchQuery, values, (err, exactResults) => {
-// if (err) {
-// console.error("Error fetching data:", err.stack);
-// return res.status(500).json({ error: "Database query failed" });
-// }
+db.query(exactMatchQuery, values, (err, exactResults) => {
+if (err) {
+console.error("Error fetching data:", err.stack);
+return res.status(500).json({ error: "Database query failed" });
+}
 
-// res.json(exactResults);
-// });
-// }
-// );
-// });
+res.json(exactResults);
+});
+}
+);
+});
 
 
 
 // fetchProductslist PostGreSQL 
 
-app.get("/fetchProductslist", async (req, res) => {
-const searchQuery = req.query.search || "";
-const keywords = searchQuery.toLowerCase().split(/\s+/);
+// app.get("/fetchProductslist", async (req, res) => {
+// const searchQuery = req.query.search || "";
+// const keywords = searchQuery.toLowerCase().split(/\s+/);
 
-try {
-const conditions = keywords.map((_, index) => `LOWER(name) ILIKE $${index + 1}`).join(" AND ");
-const values = keywords.map((keyword) => `%${keyword}%`);
+// try {
+// const conditions = keywords.map((_, index) => `LOWER(name) ILIKE $${index + 1}`).join(" AND ");
+// const values = keywords.map((keyword) => `%${keyword}%`);
 
-const query = `
-SELECT * FROM _imgproduct
-WHERE ${conditions}
-`;
+// const query = `
+// SELECT * FROM _imgproduct
+// WHERE ${conditions}
+// `;
 
-const result = await pool.query(query, values);
+// const result = await pool.query(query, values);
 
-if (result.rows.length > 0) {
-return res.json(result.rows);
-}
+// if (result.rows.length > 0) {
+// return res.json(result.rows);
+// }
 
-const exactMatchQuery = `
-SELECT * FROM _imgproduct
-WHERE LOWER(img) = LOWER($1)
-`;
-const exactResult = await pool.query(exactMatchQuery, [searchQuery]);
+// const exactMatchQuery = `
+// SELECT * FROM _imgproduct
+// WHERE LOWER(img) = LOWER($1)
+// `;
+// const exactResult = await pool.query(exactMatchQuery, [searchQuery]);
 
-res.json(exactResult.rows);
-} catch (err) {
-console.error("❌ Database query failed:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-});
+// res.json(exactResult.rows);
+// } catch (err) {
+// console.error("❌ Database query failed:", err.message);
+// res.status(500).json({ error: "Database query failed" });
+// }
+// });
 
 
 
@@ -837,33 +836,33 @@ res.status(500).json({ message: "Fetch error", error: err.message });
 });
 
 
-// app.post("/fetchlogin", (req, res) => {
-// const FetchQuery = "SELECT * FROM registeration";
-// db.query(FetchQuery, (err, result) => {
-// if (err) {
-// console.log("Error fetched");
-// res.status(500).json({ message: "Error fetched", error: err.message });
-// } else {
-// console.log(result);
-// res.status(200).json(result);
-// }
-// });
-// });
-
-//
-
-app.post("/fetchlogin", async (req, res) => {
-const fetchQuery = "SELECT * FROM _registeration";
-
-try {
-const result = await pool.query(fetchQuery);
-console.log(result.rows);
-res.status(200).json(result.rows);
-} catch (err) {
-console.error("Error fetched:", err.message);
+app.post("/fetchlogin", (req, res) => {
+const FetchQuery = "SELECT * FROM registeration";
+db.query(FetchQuery, (err, result) => {
+if (err) {
+console.log("Error fetched");
 res.status(500).json({ message: "Error fetched", error: err.message });
+} else {
+console.log(result);
+res.status(200).json(result);
 }
 });
+});
+
+
+
+// app.post("/fetchlogin", async (req, res) => {
+// const fetchQuery = "SELECT * FROM _registeration";
+
+// try {
+// const result = await pool.query(fetchQuery);
+// console.log(result.rows);
+// res.status(200).json(result.rows);
+// } catch (err) {
+// console.error("Error fetched:", err.message);
+// res.status(500).json({ message: "Error fetched", error: err.message });
+// }
+// });
 
 
 // Forget Pass Login ,,
@@ -1363,149 +1362,149 @@ error: err.message,
 //  Registeration ...
 
 
-// app.post("/fetchAdmin", (req, res) => {
-// const { adminuser, adminpass } = req.body;
-
-// // SQL query to check
-// // if the credentials match
-// const insertQueryLogin =
-// "SELECT * FROM admindashboard WHERE adminuser = ? AND adminpass = ?";
-
-// db.query(insertQueryLogin, [adminuser, adminpass], (err, result) => {
-// if (err) {
-// console.log("Error fetching user:", err);
-// res
-// .status(500)
-// .json({
-// success: false,
-// message: "Error fetching data",
-// error: err.message,
-// });
-// return;
-// }
-
-// if (result.length > 0) {
-// // User found,
-// // login successful
-// console.log("Login successful");
-// res.status(200).json({ success: true, message: "Login successful" });
-// } else {
-// // No user found with
-// //  the provided credentials
-// console.log("Invalid credentials");
-// res.status(401).json({ success: false, message: "Invalid credentials" });
-// }
-// });
-// });
-
-app.post("/fetchAdmin", async (req, res) => {
+app.post("/fetchAdmin", (req, res) => {
 const { adminuser, adminpass } = req.body;
 
-const loginQuery = `
-SELECT * FROM _admindashboard
-WHERE adminuser = $1 AND adminpass = $2
-`;
+// SQL query to check
+// if the credentials match
+const insertQueryLogin =
+"SELECT * FROM admindashboard WHERE adminuser = ? AND adminpass = ?";
 
-try {
-const result = await pool.query(loginQuery, [adminuser, adminpass]);
-
-if (result.rows.length > 0) {
-// User found
-console.log("Login successful");
-return res.status(200).json({ success: true, message: "Login successful" });
-} else {
-// No match
-console.log("Invalid credentials");
-return res.status(401).json({ success: false, message: "Invalid credentials" });
-}
-} catch (err) {
-console.error("Error fetching user:", err.message);
-return res.status(500).json({
+db.query(insertQueryLogin, [adminuser, adminpass], (err, result) => {
+if (err) {
+console.log("Error fetching user:", err);
+res
+.status(500)
+.json({
 success: false,
 message: "Error fetching data",
 error: err.message,
 });
+return;
+}
+
+if (result.length > 0) {
+// User found,
+// login successful
+console.log("Login successful");
+res.status(200).json({ success: true, message: "Login successful" });
+} else {
+// No user found with
+//  the provided credentials
+console.log("Invalid credentials");
+res.status(401).json({ success: false, message: "Invalid credentials" });
 }
 });
+});
 
-
-// app.post("/registerAdmin", (req, res) => {
+// app.post("/fetchAdmin", async (req, res) => {
 // const { adminuser, adminpass } = req.body;
 
-// if (!adminuser || !adminpass) {
-// return res
-// .status(400)
-// .json({ success: false, message: "Username and password are required" });
+// const loginQuery = `
+// SELECT * FROM _admindashboard
+// WHERE adminuser = $1 AND adminpass = $2
+// `;
+
+// try {
+// const result = await pool.query(loginQuery, [adminuser, adminpass]);
+
+// if (result.rows.length > 0) {
+// // User found
+// console.log("Login successful");
+// return res.status(200).json({ success: true, message: "Login successful" });
+// } else {
+// // No match
+// console.log("Invalid credentials");
+// return res.status(401).json({ success: false, message: "Invalid credentials" });
 // }
-
-// // Check if the
-// // admin already exists
-
-// const checkAdminQuery = "SELECT * FROM admindashboard WHERE adminuser = ?";
-// const insertAdminQuery =
-// "INSERT INTO admindashboard (adminuser, adminpass) VALUES (?, ?)";
-
-// db.query(checkAdminQuery, [adminuser], (err, result) => {
-// if (err) {
-// console.log("Error checking admin:", err.message);
+// } catch (err) {
+// console.error("Error fetching user:", err.message);
 // return res.status(500).json({
 // success: false,
-// message: "Error checking admin",
+// message: "Error fetching data",
 // error: err.message,
 // });
 // }
-
-// if (result.length > 0) {
-// return res
-// .status(409)
-// .json({ success: false, message: "Admin username already exists!" });
-// }
-
-// // Insert
-// // the new admin
-// db.query(insertAdminQuery, [adminuser, adminpass], (insertErr) => {
-// if (insertErr) {
-// console.log("Error inserting admin:", insertErr.message);
-// return res.status(500).json({
-// success: false,
-// message: "Error inserting admin",
-// error: insertErr.message,
-// });
-// }
-
-// console.log("Admin registered successfully!");
-// return res
-// .status(201)
-// .json({ success: true, message: "Admin registered successfully!" });
-// });
-// });
 // });
 
 
-app.post('/registerAdmin', async (req, res) => {
-  const { adminuser, adminpass } = req.body;
-    console.log("Received admin register:", adminuser, adminpass); // 👈 Debug log
+app.post("/registerAdmin", (req, res) => {
+const { adminuser, adminpass } = req.body;
 
-  try {
-  const insertAdminQuery = `
-  INSERT INTO _admindashboard (adminuser, adminpass)
-  VALUES ($1, $2)
-  `;
-  await pool.query(insertAdminQuery, [adminuser, adminpass]); 
+if (!adminuser || !adminpass) {
+return res
+.status(400)
+.json({ success: false, message: "Username and password are required" });
+}
 
-    return res.status(200).json({
-      success: true,
-      message: "Admin registered successfully"
-    });
-  } catch (err) {
-    console.error("Error in /registerAdmin:", err);
-    return res.status(500).json({
-      success: false,
-      message: "Server error while registering admin"
-    });
-  }
-  
+// Check if the
+// admin already exists
+
+const checkAdminQuery = "SELECT * FROM admindashboard WHERE adminuser = ?";
+const insertAdminQuery =
+"INSERT INTO admindashboard (adminuser, adminpass) VALUES (?, ?)";
+
+db.query(checkAdminQuery, [adminuser], (err, result) => {
+if (err) {
+console.log("Error checking admin:", err.message);
+return res.status(500).json({
+success: false,
+message: "Error checking admin",
+error: err.message,
 });
+}
+
+if (result.length > 0) {
+return res
+.status(409)
+.json({ success: false, message: "Admin username already exists!" });
+}
+
+// Insert
+// the new admin
+db.query(insertAdminQuery, [adminuser, adminpass], (insertErr) => {
+if (insertErr) {
+console.log("Error inserting admin:", insertErr.message);
+return res.status(500).json({
+success: false,
+message: "Error inserting admin",
+error: insertErr.message,
+});
+}
+
+console.log("Admin registered successfully!");
+return res
+.status(201)
+.json({ success: true, message: "Admin registered successfully!" });
+});
+});
+});
+
+
+// app.post('/registerAdmin', async (req, res) => {
+//   const { adminuser, adminpass } = req.body;
+//     console.log("Received admin register:", adminuser, adminpass); // 👈 Debug log
+
+//   try {
+//   const insertAdminQuery = `
+//   INSERT INTO _admindashboard (adminuser, adminpass)
+//   VALUES ($1, $2)
+//   `;
+//   await pool.query(insertAdminQuery, [adminuser, adminpass]); 
+
+//     return res.status(200).json({
+//       success: true,
+//       message: "Admin registered successfully"
+//     });
+//   } catch (err) {
+//     console.error("Error in /registerAdmin:", err);
+//     return res.status(500).json({
+//       success: false,
+//       message: "Server error while registering admin"
+//     });
+//   }
+  
+// });
 
 
 // app.post("/addcartaddress", (req, res) => {
@@ -1857,84 +1856,80 @@ res.status(400).json({ error: "Payment verification failed" });
 // }
 // );
 
-
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/Images");
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
+destination: (req, file, cb) => {
+cb(null, "public/Images");
+},
+filename: (req, file, cb) => {
+cb(null, Date.now() + path.extname(file.originalname));
+},
 });
 
 const upload = multer({ storage });
 
 app.post(
-  "/api/add-product",
-  upload.fields([
-    { name: "image", maxCount: 1 },
-    { name: "imageone", maxCount: 1 },
-    { name: "imagetwo", maxCount: 1 },
-    { name: "imagethree", maxCount: 1 },
-  ]),
-  async (req, res) => {
-    const {
-      category,    
-      name,        
-      price,       
-      sizes,       
-      stock,       
-      description, 
-      review       
-    } = req.body;
+"/api/add-product",
+upload.fields([
+{ name: "image", maxCount: 1 },
+{ name: "imageone", maxCount: 1 },
+{ name: "imagetwo", maxCount: 1 },
+{ name: "imagethree", maxCount: 1 },
+]),
+async (req, res) => {
+const {
+category,
+name,
+price,
+sizes,
+stock,
+description,
+review,
+} = req.body;
 
-    const imagePath = req.files.image
-      ? `/Images/${req.files.image[0].filename}`
-      : null;
-    const imagePathOne = req.files.imageone
-      ? `/Images/${req.files.imageone[0].filename}`
-      : null;
-    const imagePathTwo = req.files.imagetwo
-      ? `/Images/${req.files.imagetwo[0].filename}`
-      : null;
-    const imagePathThree = req.files.imagethree
-      ? `/Images/${req.files.imagethree[0].filename}`
-      : null;
+const imagePath = req.files.image
+? `/Images/${req.files.image[0].filename}`
+: null;
+const imagePathOne = req.files.imageone
+? `/Images/${req.files.imageone[0].filename}`
+: null;
+const imagePathTwo = req.files.imagetwo
+? `/Images/${req.files.imagetwo[0].filename}`
+: null;
+const imagePathThree = req.files.imagethree
+? `/Images/${req.files.imagethree[0].filename}`
+: null;
 
-    // सही query - आपके columns के purpose के according
-    const query = `
-      INSERT INTO _imgproduct (
-        img, name, price, file_path, sizes, file_path1, file_path2, file_path3,
-        stock, description, review
-      )
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
-    `;
+const query = `
+INSERT INTO _imgproduct (
+img, name, price, file_path, sizes, file_path1, file_path2,
+file_path3, stock, description, review
+)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+`;
 
-    const values = [
-      category,         
-      name,             
-      price,           
-      imagePath,       
-      sizes,            
-      imagePathOne,     
-      imagePathTwo,     
-      imagePathThree,  
-      stock,            
-      description,      
-      review            
-    ];
-      
-    try {
-      await pool.query(query, values);
-      res.status(200).send("Product added successfully");
-    } catch (err) {
-      console.error("Error inserting product into database:", err.message);
-      console.error("Full error:", err);
-      res.status(500).send("Error adding product");
-    }
-  }
+const values = [
+category,
+name,
+price,
+imagePath,
+sizes,
+imagePathOne,
+imagePathTwo,
+imagePathThree,
+stock,
+description,
+review,
+];
+
+try {
+await pool.query(query, values);
+res.status(200).send("Product added successfully");
+} catch (err) {
+console.error("Error inserting product into database:", err.message);
+res.status(500).send("Error adding product");
+}
+}
 );
-
 
 //
 
@@ -2149,33 +2144,33 @@ res.status(200).json({ products: result, total: totalProducts });
 });
 
 
-// app.get("/fetchCutomerOrder", (req, res) => {
-// const productQuery = "SELECT * FROM custorder";
-// db.query(productQuery, (err, result) => {
-// if (err) {
-// console.log("Fetch error");
-// res.status(500).json({ message: "Fetch error", error: err.message });
-// } else {
-// const totalProducts = result.length;
-// res.status(200).json({ products: result, total: totalProducts });
-// }
-// });
-// });
-
-
-app.get("/fetchCutomerOrder", async (req, res) => {
-const productQuery = "SELECT * FROM _custorder";
-
-try {
-const result = await pool.query(productQuery);
-const totalProducts = result.rows.length;
-
-res.status(200).json({ products: result.rows, total: totalProducts });
-} catch (err) {
-console.log("Fetch error:", err.message);
+app.get("/fetchCutomerOrder", (req, res) => {
+const productQuery = "SELECT * FROM custorder";
+db.query(productQuery, (err, result) => {
+if (err) {
+console.log("Fetch error");
 res.status(500).json({ message: "Fetch error", error: err.message });
+} else {
+const totalProducts = result.length;
+res.status(200).json({ products: result, total: totalProducts });
 }
 });
+});
+
+
+// app.get("/fetchCutomerOrder", async (req, res) => {
+// const productQuery = "SELECT * FROM _custorder";
+
+// try {
+// const result = await pool.query(productQuery);
+// const totalProducts = result.rows.length;
+
+// res.status(200).json({ products: result.rows, total: totalProducts });
+// } catch (err) {
+// console.log("Fetch error:", err.message);
+// res.status(500).json({ message: "Fetch error", error: err.message });
+// }
+// });
 
 
 // app.post("/fetchCutomerOrder", (req, res) => {
@@ -2197,6 +2192,7 @@ res.status(500).json({ message: "Fetch error", error: err.message });
 // res.json({ products: results, total: results.length });
 // });
 // });
+
 
 
 app.post("/fetchCutomerOrder", async (req, res) => {
