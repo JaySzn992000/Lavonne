@@ -1860,7 +1860,7 @@ res.status(400).json({ error: "Payment verification failed" });
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/Images"); 
+    cb(null, "public/Images");
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
@@ -1892,19 +1892,21 @@ app.post(
       console.log("📌 Body:", req.body);
       console.log("📸 Files:", req.files);
 
-      // image paths
-      const imagePath = req.files.image
+      const imagePath = req.files?.image
         ? `/Images/${req.files.image[0].filename}`
-        : null;
-      const imagePathOne = req.files.imageone
+        : "default_main.png";
+
+      const imagePathOne = req.files?.imageone
         ? `/Images/${req.files.imageone[0].filename}`
-        : null;
-      const imagePathTwo = req.files.imagetwo
+        : "default_one.png";
+
+      const imagePathTwo = req.files?.imagetwo
         ? `/Images/${req.files.imagetwo[0].filename}`
-        : null;
-      const imagePathThree = req.files.imagethree
+        : "default_two.png";
+
+      const imagePathThree = req.files?.imagethree
         ? `/Images/${req.files.imagethree[0].filename}`
-        : null;
+        : "default_three.png";
 
       const query = `
         INSERT INTO _imgproduct (
@@ -1928,7 +1930,7 @@ app.post(
       ];
 
       await pool.query(query, values);
-      res.status(200).send("✅ Product added successfully");
+      res.status(200).send("✅ Product added successfully (with defaults)");
     } catch (err) {
       console.error("❌ Error inserting product into database:", err.message);
       res.status(500).send("Error adding product");
