@@ -13,11 +13,12 @@ require("dotenv").config();
 const pool = require("./config");
 
 
+
 app.use(cors({
   origin: [
-    'http://localhost:3000',
     'https://lavonne.vercel.app',
-    'https://namasyaa.vercel.app'
+    'https://naturalbuti-jb4y.vercel.app',
+    'https://naturalbuti-ycfw.vercel.app',
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
@@ -47,6 +48,8 @@ app.get("/ping", (req, res) => {
   res.status(200).send("Server is alive!");
 });
 
+
+const axios = require("axios");
 
 
 app.get("/registeration", async (req, res) => {
@@ -327,7 +330,7 @@ WHERE LOWER(img) = LOWER($1)
 `;
 
 try {
-const result = await pool.query(exactMatchQuery, ['Mango Pickle']);
+const result = await pool.query(exactMatchQuery, ['AloeVeraGel']);
 res.json(result.rows);
 } catch (err) {
 console.error("Error fetching data:", err.message);
@@ -363,7 +366,7 @@ WHERE LOWER(img) = LOWER($1)
 `;
 
 try {
-const result = await pool.query(exactMatchQuery, ['Chilli']);
+const result = await pool.query(exactMatchQuery, ['KasturiHaldi']);
 res.json(result.rows);
 } catch (err) {
 console.error("Error fetching data:", err.message);
@@ -434,7 +437,7 @@ WHERE LOWER(img) = LOWER($1)
 `;
 
 try {
-const result = await pool.query(exactMatchQuery, ['Carrot']);
+const result = await pool.query(exactMatchQuery, ['BananaPowder']);
 res.json(result.rows);
 } catch (err) {
 console.error("Error fetching data:", err.message);
@@ -506,7 +509,7 @@ WHERE LOWER(img) = LOWER($1)
 `;
 
 try {
-const result = await pool.query(exactMatchQuery, ['Lemon']);
+const result = await pool.query(exactMatchQuery, ['LicoricePowder']);
 res.json(result.rows);
 } catch (err) {
 console.error("Error fetching data:", err.message);
@@ -542,7 +545,7 @@ WHERE LOWER(img) = LOWER($1)
 `;
 
 try {
-const result = await pool.query(exactMatchQuery, ['Bitter']);
+const result = await pool.query(exactMatchQuery, ['HairGrowth']);
 res.json(result.rows);
 } catch (err) {
 console.error("Error fetching data:", err.message);
@@ -577,7 +580,7 @@ WHERE LOWER(img) = LOWER($1)
 `;
 
 try {
-const result = await pool.query(exactMatchQuery, ['Garlic']);
+const result = await pool.query(exactMatchQuery, ['SandalwoodPowder']);
 res.json(result.rows);
 } catch (err) {
 console.error("Error fetching data:", err.message);
@@ -683,7 +686,7 @@ WHERE LOWER(img) = LOWER($1)
 `;
 
 try {
-const result = await pool.query(exactMatchQuery, ['Mixed']);
+const result = await pool.query(exactMatchQuery, ['BeetrootPowder']);
 res.json(result.rows);
 } catch (err) {
 console.error("Error fetching data:", err.message);
@@ -695,43 +698,52 @@ res.status(500).json({ error: "Database query failed" });
 // from here
 
 // app.get("/fetchProductslist", (req, res) => {
-//   const searchQuery = req.query.search || "";
-//   const keywords = searchQuery.toLowerCase().split(/\s+/);
-//   const conditions = keywords.map((keyword) => `LOWER(name) LIKE ?`).join(" AND ");
-//   const advancedSearchQuery = `
-//     SELECT *
-//     FROM imgproduct
-//     WHERE ${conditions}
-//   `;
-//   const advancedSearchValues = keywords.map((keyword) => `%${keyword}%`);
+// const searchQuery = req.query.search || "";
 
-//   db.query(advancedSearchQuery, advancedSearchValues, (err, advancedResults) => {
-//     if (err) {
-//       console.error("Error fetching data:", err.stack);
-//       return res.status(500).json({ error: "Database query failed" });
-//     }
+// const keywords = searchQuery.toLowerCase().split(/\s+/);
+// const conditions = keywords
+// .map((keyword) => `LOWER(name) LIKE ?`)
+// .join(" AND ");
+// const advancedSearchQuery = `
+// SELECT *
+// FROM imgproduct
+// WHERE ${conditions}
+// `;
+// const advancedSearchValues = keywords.map((keyword) => `%${keyword}%`);
 
-//     if (advancedResults.length > 0) {
-//       return res.json(advancedResults);
-//     }
+// db.query(
+// advancedSearchQuery,
+// advancedSearchValues,
+// (err, advancedResults) => {
+// if (err) {
+// console.error("Error fetching data:", err.stack);
+// return res.status(500).json({ error: "Database query failed" });
+// }
 
-//     // If no results, do exact match
-//     const exactMatchQuery = `
-//       SELECT *
-//       FROM imgproduct
-//       WHERE LOWER(img) = LOWER(?)
-//     `;
-//     const values = [searchQuery];
+// if (advancedResults.length > 0) {
+// return res.json(advancedResults);
+// }
 
-//     db.query(exactMatchQuery, values, (err, exactResults) => {
-//       if (err) {
-//         console.error("Error fetching data:", err.stack);
-//         return res.status(500).json({ error: "Database query failed" });
-//       }
+// // If no advanced results,
+// // check exact match
 
-//       res.json(exactResults);
-//     });
-//   });
+// const exactMatchQuery = `
+// SELECT *
+// FROM imgproduct
+// WHERE LOWER(img) = LOWER(?)
+// `;
+// const values = [searchQuery];
+
+// db.query(exactMatchQuery, values, (err, exactResults) => {
+// if (err) {
+// console.error("Error fetching data:", err.stack);
+// return res.status(500).json({ error: "Database query failed" });
+// }
+
+// res.json(exactResults);
+// });
+// }
+// );
 // });
 
 
@@ -772,17 +784,17 @@ res.status(500).json({ error: "Database query failed" });
 
 
 
-app.get("/fetchProductslist", (req, res) => {
-db.query("SELECT * FROM imgproduct", (err, results) => {
-if (err) {
-console.error("Error fetching data:", err.stack);
-return res.status(500).json({ error: "Database query failed" });
-}
-res.json(results);
-});
-});
+// app.get("/fetchProductslist", (req, res) => {
+// db.query("SELECT * FROM imgproduct", (err, results) => {
+// if (err) {
+// console.error("Error fetching data:", err.stack);
+// return res.status(500).json({ error: "Database query failed" });
+// }
+// res.json(results);
+// });
+// });
 
-
+//
 
 app.get("/fetchProductslist", async (req, res) => {
 try {
@@ -1575,7 +1587,7 @@ try {
 const client = await pool.connect();
 
 const insertQuery = `
-INSERT INTO custorder (
+INSERT INTO _custorder (
 name, mob, email, id, productname, price, quantity,
 gender, add_name, country, pincode, address, state,
 mobilenumber, alternativenumber, emailid,
@@ -1719,8 +1731,8 @@ setInterval(() => {
 
 
 const razorpayInstance = new Razorpay({
-key_id: "rzp_live_Zm7uF61IDcY0t9", //  Razorpay key_id
-key_secret: "FgZimfWqOEOLs4ejcIZHO7yc", // Razorpay key_secret
+key_id: "rzp_live_Kh5Fut1EpwDwF5", //  Razorpay key_id
+key_secret: "zV2WqzWm6CTf3qH5i0xnO1La", // Razorpay key_secret
 });
 
 app.post("/create-order", async (req, res) => {
@@ -1846,7 +1858,6 @@ res.status(400).json({ error: "Payment verification failed" });
 // }
 // );
 
-
 const storage = multer.diskStorage({
 destination: (req, file, cb) => {
 cb(null, "public/Images");
@@ -1921,7 +1932,6 @@ res.status(500).send("Error adding product");
 }
 }
 );
-
 
 //
 
