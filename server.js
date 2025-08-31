@@ -1908,29 +1908,29 @@ app.post(
         ? `/Images/${req.files.imagethree[0].filename}`
         : "default_three.png";
 
-      const query = `
-        INSERT INTO _imgproduct (
-          category, name, price, img, sizes, file_path1, file_path2, file_path3, stock, description, review
-        )
-        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
-      `;
+  const query = `
+  INSERT INTO _imgproduct (
+  img, name, price, file_path, sizes, file_path1, file_path2, file_path3, stock, description, review
+  )
+  VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
+`;
 
-      const values = [
-        category,
-        name,
-        price,
-        imagePath,
-        sizes,
-        imagePathOne,
-        imagePathTwo,
-        imagePathThree,
-        stock,
-        description,
-        review,
-      ];
-
-      await pool.query(query, values);
-      res.status(200).send("✅ Product added successfully (with defaults)");
+const values = [
+  req.body.img,   // yahi pe category value save hogi
+  name,
+  price,
+  imagePath,
+  sizes,
+  imagePathOne,
+  imagePathTwo,
+  imagePathThree,
+  stock,
+  description,
+  review,
+];
+  
+    await pool.query(query, values);
+    res.status(200).send("✅ Product added successfully (with defaults)");
     } catch (err) {
       console.error("❌ Error inserting product into database:", err.message);
       res.status(500).send("Error adding product");
