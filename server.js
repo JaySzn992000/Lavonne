@@ -13,11 +13,9 @@ require("dotenv").config();
 const pool = require("./config");
 
 
-
 app.use(cors({
   origin: [
-    'https://lavonne.vercel.app',
-    'https://naturalbuti-ycfw.vercel.app',
+    'https://lavonne.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
