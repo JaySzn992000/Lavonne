@@ -1859,79 +1859,82 @@ res.status(400).json({ error: "Payment verification failed" });
 
 
 const storage = multer.diskStorage({
-destination: (req, file, cb) => {
-cb(null, "public/Images");
-},
-filename: (req, file, cb) => {
-cb(null, Date.now() + path.extname(file.originalname));
-},
+  destination: (req, file, cb) => {
+    cb(null, "public/Images");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
 });
 
 const upload = multer({ storage });
 
 app.post(
-"/api/add-product",
-upload.fields([
-{ name: "image", maxCount: 1 },
-{ name: "imageone", maxCount: 1 },
-{ name: "imagetwo", maxCount: 1 },
-{ name: "imagethree", maxCount: 1 },
-]),
-async (req, res) => {
-const {
-category,
-name,
-price,
-sizes,
-stock,
-description,
-review,
-} = req.body;
+  "/api/add-product",
+  upload.fields([
+    { name: "image", maxCount: 1 },
+    { name: "imageone", maxCount: 1 },
+    { name: "imagetwo", maxCount: 1 },
+    { name: "imagethree", maxCount: 1 },
+  ]),
+  async (req, res) => {
+    const {
+      category,    
+      name,        
+      price,       
+      sizes,       
+      stock,       
+      description, 
+      review       
+    } = req.body;
 
-const imagePath = req.files.image
-? `/Images/${req.files.image[0].filename}`
-: null;
-const imagePathOne = req.files.imageone
-? `/Images/${req.files.imageone[0].filename}`
-: null;
-const imagePathTwo = req.files.imagetwo
-? `/Images/${req.files.imagetwo[0].filename}`
-: null;
-const imagePathThree = req.files.imagethree
-? `/Images/${req.files.imagethree[0].filename}`
-: null;
+    const imagePath = req.files.image
+      ? `/Images/${req.files.image[0].filename}`
+      : null;
+    const imagePathOne = req.files.imageone
+      ? `/Images/${req.files.imageone[0].filename}`
+      : null;
+    const imagePathTwo = req.files.imagetwo
+      ? `/Images/${req.files.imagetwo[0].filename}`
+      : null;
+    const imagePathThree = req.files.imagethree
+      ? `/Images/${req.files.imagethree[0].filename}`
+      : null;
 
-const query = `
-INSERT INTO _imgproduct (
-  img, name, price, file_path, sizes, file_path1, file_path2,
-  file_path3, stock, description, review
-)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
-`;
+    // सही query - आपके columns के purpose के according
+    const query = `
+      INSERT INTO _imgproduct (
+        img, name, price, file_path, sizes, file_path1, file_path2, file_path3,
+        stock, description, review
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+    `;
 
-const values = [
-  imagePath,
-  name,
-  price,
-  imagePathOne,
-  sizes,
-  imagePathTwo, 
-  imagePathThree,
-  category,
-  stock,
-  description,
-  review,
-];
-  
-try {
-await pool.query(query, values);
-res.status(200).send("Product added successfully");
-} catch (err) {
-console.error("Error inserting product into database:", err.message);
-res.status(500).send("Error adding product");
-}
-}
+    const values = [
+      category,         
+      name,             
+      price,           
+      imagePath,       
+      sizes,            
+      imagePathOne,     
+      imagePathTwo,     
+      imagePathThree,  
+      stock,            
+      description,      
+      review            
+    ];
+      
+    try {
+      await pool.query(query, values);
+      res.status(200).send("Product added successfully");
+    } catch (err) {
+      console.error("Error inserting product into database:", err.message);
+      console.error("Full error:", err);
+      res.status(500).send("Error adding product");
+    }
+  }
 );
+
 
 //
 
