@@ -8,7 +8,7 @@ import axios from "axios";
 import "./Categoriesfruits.css";
 import { Helmet } from "react-helmet";
 
-const Pastrycake = ({ showFilters = true, limit }) => {
+const PastryCake = ({ showFilters = true, limit }) => {
 
 const [allProducts, setAllProducts] = useState([]); 
 const [filteredProducts, setFilteredProducts] = useState([]); // Store 
@@ -207,4 +207,4 @@ loading="lazy"
 );
 };
 
-export default Pastrycake;
+export default PastryCake;
