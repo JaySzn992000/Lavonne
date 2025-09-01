@@ -86,7 +86,7 @@ const isValid = onsubmit();
 if (!isValid) return; 
 
 try {
-const response = await fetch("https://lavonne-c8o3.onrender.com/registerationPost", {
+const response = await fetch("https://lavonne-0729.onrender.com/registerationPost", {
 method: "POST",
 headers: {
 "Content-Type": "application/json",
