@@ -34,7 +34,6 @@ transition: 0.3s;
 
 .Product_navbar.scrolled {
 position: fixed;
-height: 87px;
 top: 0;
 }
 
@@ -128,7 +127,7 @@ font-size: 0.8rem;
 
 
 .Product_navbar .logo_img {
-width: 104px;
+width: 107px;
 height: auto;   
 z-index: 999;
 margin-bottom: .5em;
@@ -463,9 +462,6 @@ font-size: 0.8rem;
 height: 67px;
 }
 
-.Product_navbar.scrolled {
-height: 67px;
-}
 
 
 /* This is for
@@ -553,10 +549,6 @@ gap: 0.2em;
 display: none;
 }
 
-
-.Product_navbar.scrolled {
-height: 67px;
-}
 
 
 .navProduct_Slider .navSlider_flex .loggedDiv_nameEmail li {
