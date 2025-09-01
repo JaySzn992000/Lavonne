@@ -23,11 +23,11 @@ import NavSliderDash from "./NavSliderDash";
 import TlPrdctOrdrearn from "./DashboardADmin/TlPrdctOrdrearn";
 import Navbar from "./headers_footer/navbar";
 import Home from "./components/Home";
-import AloeVeraGel from "./Products/AloeVeraGel";
-import BananaPowder from "./Products/BananaPowder";
+import ChocolateCake from "./Products/ChocolateCake";
+import CreamCake from "./Products/CreamCake";
 import Contactus from "./components/Contactus";
 import VideoSliderComponent from "./videoslider";
-import LicoricePowder from "./Products/LicoricePowder";
+import PastryCake from "./Products/PastryCake";
 import Aboutus from "./components/about";
 import Contactpage from "./components/Contactpage";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
@@ -41,9 +41,9 @@ import AdminUpdate from "./AdminUpdate";
 import DashboardcomXKPbcadafcddcfadacbPKXproductlistsearchdashboard from "./Dashboard";
 import Message from "./components/Message";
 import CategoryJackfruit from "./Products/CategoryJackfruit";
-import KasturiHaldi from "./Products/KasturiHaldi";
-import BeetrootPowder from "./Products/BeetrootPowder";
-import CategoryLemon from "./Products/LicoricePowder";
+import FestivalCake from "./Products/FestivalCake";
+import FruitCake from "./Products/FruitCake";
+import CategoryLemon from "./Products/PastryCake";
 import HairGrowth from "./Products/HairGrowth";
 import SandalwoodPowder from "./Products/SandalwoodPowder";
 import CategoryGhee from "./Products/CategoryGhee";
@@ -57,7 +57,7 @@ import { BarChart, PieChart } from "recharts";
 import TestimonialSlider from "./components/Testimonial";
 import Cart from "./components/Cart";
 import { Navigate } from "react-router-dom";
-import Chilli from "./Products/KasturiHaldi";
+import Chilli from "./Products/FestivalCake";
 
 
 function App () {
@@ -93,17 +93,16 @@ return (
 <Route path="/NavSliderDash" element={<NavSliderDash />} />
 <Route path="/TlPrdctOrdrearn" element={<TlPrdctOrdrearn />} />
 <Route path="/Navbar" element={<Navbar />} />
-<Route path="/AloeVeraGel" element={<AloeVeraGel />} />
-<Route path="/BananaPowder" element={<BananaPowder />} />
-
-<Route path="/KasturiHaldi" element={<KasturiHaldi />} />
-<Route path="/LicoricePowder" element={<LicoricePowder />} />
+<Route path="/ChocolateCake" element={<ChocolateCake />} />
+<Route path="/CreamCake" element={<CreamCake />} />
+<Route path="/FestivalCake" element={<FestivalCake />} />
+<Route path="/PastryCake" element={<PastryCake />} />
 <Route path="/HairGrowth" element={<HairGrowth />} />
 <Route path="/SandalwoodPowder" element={<SandalwoodPowder />} />
 <Route path="/CategoryGhee" element={<CategoryGhee />} />
 <Route path="/CategoryJackfruit" element={<CategoryJackfruit />} />
 <Route path="/CategoryLemon" element={<CategoryLemon />} />
-<Route path="/BeetrootPowder" element={<BeetrootPowder />} />
+<Route path="/FruitCake" element={<FruitCake />} />
 <Route path="/Pickles" element={<Pickles />} />
 <Route path="/AdminForget" element={<AdminForget />} />
 <Route path="/" element={<Home />} />
