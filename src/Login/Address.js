@@ -122,7 +122,7 @@ setIsProcessing(true); // 🟢 Immediately
 // show "Processing..."
 
 try {
-const response = await axios.post("https://namasyaa.onrender.com/create-order", {
+const response = await axios.post("https://lavonne-0729.onrender.com/create-order", {
 amount: totalAmount,
 });
 
@@ -143,7 +143,7 @@ return;
 
 
 const paymentVerificationResponse = await axios.post(
-"https://namasyaa.onrender.com/verify-payment",
+"https://lavonne-0729.onrender.com/verify-payment",
 response
 );
 
@@ -173,7 +173,7 @@ payment_status: "Sucessfull",
 
 
 await axios.post(
-"https://namasyaa.onrender.com/addcartaddress",
+"https://lavonne-0729.onrender.com/addcartaddress",
 dataToSend
 );
 resetForm();
