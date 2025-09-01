@@ -47,7 +47,7 @@ return;
 
 
 try {
-const response = await fetch("https://namasyaa.onrender.com/verifyemail", {
+const response = await fetch("https://lavonne-0729.onrender.com/verifyemail", {
 method: "POST",
 headers: {
 "Content-Type": "application/json",
@@ -115,7 +115,7 @@ return;
 
 
 try {
-const response = await fetch("https://namasyaa.onrender.com/resetpassword", {
+const response = await fetch("https://lavonne-0729.onrender.com/resetpassword", {
 method: "POST",
 headers: {
 "Content-Type": "application/json",
