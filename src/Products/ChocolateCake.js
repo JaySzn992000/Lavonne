@@ -9,7 +9,7 @@ import axios from "axios";
 import "./Categoriesfruits.css";
 
 
-const AloeVeraGel = ({ showFilters = true, limit }) => {
+const ChocolateCake = ({ showFilters = true, limit }) => {
 
 const [allProducts, setAllProducts] = useState([]); 
 const [filteredProducts, setFilteredProducts] = useState([]); // Store 
@@ -193,14 +193,16 @@ alt=""
 </section>
 </div>
 
-<div className="header_Filter">
+{/* <div className="header_Filter">
 {" "}
 {showFilters && <Filterheader></Filterheader>}{" "}
-</div>
+</div> */}
+
+<Filterheader></Filterheader>
 
 </div>
 
 );
 };
 
-export default AloeVeraGel;
+export default ChocolateCake;
