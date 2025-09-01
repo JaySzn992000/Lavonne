@@ -14,7 +14,7 @@ useEffect(() => {
 const DbFetch = async () => {
 try {
 
-const response = await fetch("https://namasyaa.onrender.com/usersDetails");
+const response = await fetch("https://lavonne-0729.onrender.com/usersDetails");
 
 const data = await response.json();
 
