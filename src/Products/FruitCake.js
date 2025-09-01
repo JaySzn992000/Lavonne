@@ -8,48 +8,58 @@ import axios from "axios";
 import { Helmet } from "react-helmet";
 import "./Categoriesfruits.css";
 
-const KasturiHaldi = ({ showFilters = true }) => {
+
+const FruitCake = ({ showFilters = true, limit }) => {
 
 const [allProducts, setAllProducts] = useState([]); 
-const [filteredProducts, setFilteredProducts] = useState([]); 
+const [filteredProducts, setFilteredProducts] = useState([]); // Store 
+// filtered products
 const location = useLocation();
 const query = new URLSearchParams(location.search).get("search"); // Extract 
 // 'search' query
 
 useEffect(() => {
 axios
-.get("https://namasyaa.onrender.com/fetchProductslistChilli")
+.get("https://lavonne.onrender.com/fetchProductslistHoodies")
 .then((response) => {
-console.log("Fetched Chilli Pickles products:", response.data); 
+console.log("Fetched Mixed Pickles products:", response.data); 
 setAllProducts(response.data); 
-setFilteredProducts(response.data); 
+setFilteredProducts(
+limit ? response.data.slice(0, limit) : response.data
+);
 })
 .catch((error) => {
-console.error("Error fetching Chilli Pickles products:", error);
+console.error("Error fetching Mixed Pickles products:", error);
 });
 }, []); 
 
-// Fetch products 
-// based on search query
+
 useEffect(() => {
 if (query) {
 axios
-.get("https://namasyaa.onrender.com/fetchProductslist", {
+.get("https://lavonne.onrender.com/fetchProductslist", {
 params: { search: query },
 })
 .then((response) => {
 console.log("Fetched search results:", response.data); 
-setAllProducts(response.data); 
-setFilteredProducts(response.data); 
+setAllProducts(response.data); // Update products with 
+// search results
+setFilteredProducts(
+limit ? response.data.slice(0, limit) : response.data
+);
 })
 .catch((error) => {
 console.error("Error fetching products with search query:", error);
 });
 } else {
-setFilteredProducts(allProducts); 
+setFilteredProducts(allProducts); // Reset to 
+// show all products 
+// if no query
 }
+}, [query, allProducts]); // Update whenever
+//  query or 
 
-}, [query, allProducts]); 
+// allProducts changes
 
 // Handle filter updates 
 // from Filters component
@@ -57,6 +67,11 @@ setFilteredProducts(allProducts);
 const handleFilterUpdate = (filteredData) => {
 setFilteredProducts(filteredData); 
 };
+
+// Slice the products to display 
+// only the first 'limit' products
+
+const limitedProducts = filteredProducts.slice(0, limit);
 
 const [wishlistStatus, setWishlistStatus] = useState({});
 const [wishlistCount, setWishlistCount] = useState(0);
@@ -80,12 +95,7 @@ setWishlistStatus({
 [product.id]: !wishlistStatus[product.id],
 });
 
-// Update wishlist count
-
 setWishlistCount(wishlist.length);
-
-// Toggle wishlist status and 
-// save it in localStorage
 
 const updatedWishlistStatus = {
 ...wishlistStatus,
@@ -98,26 +108,24 @@ JSON.stringify(updatedWishlistStatus)
 setWishlistStatus(updatedWishlistStatus);
 };
 
-
 return (
-
 <div>
 
 <Helmet>
-<title>Chili Pickle | Spicy & Flavorful Lal Mirch Achaar - Pickle</title>
+<title>Mixed Pickles | Authentic and Flavorful Indian Pickles</title>
 <meta
 name="description"
-content="Explore the fiery taste of Chili Pickle (Lal Mirch Achaar) made with the finest spices. A perfect addition to your meals for that extra kick of spice!"
+content="Discover a delicious range of mixed pickles made with traditional Indian recipes. Perfectly spiced and packed with flavor for every meal."
 />
 <meta
 name="keywords"
-content="Chili Pickle, Lal Mirch Achaar, Spicy Pickles, Homemade Pickles, Tangy Pickles"
+content="Mixed Pickles, Indian Pickles, Spicy Pickles, Homemade Pickles, Authentic Pickles, Pickle Variety"
 />
-<link rel="canonical" href="https://www.pickles.com/chili-pickles" />
+<link rel="canonical" href="https://www.pickles.com/mixed" />
 </Helmet>
 
-{showFilters && <Navbar />}
 
+{showFilters && <Navbar />}
 {showFilters && (
 <Filters
 allProducts={allProducts}
@@ -125,17 +133,13 @@ onFilterUpdate={handleFilterUpdate}
 />
 )}
 
-{/* Display filtered 
-products */}
 
 <div id="flex_filter_product">
 <section>
 <div className="relative_ProductContainer">
-<div className="Filteration_ProductDiv">
-</div>
-
+<div className="Filteration_ProductDiv"></div>
 <div className="flex_productlist tshirt_LeftAd">
-{filteredProducts.map((product, index) => (
+{limitedProducts.map((product, index) => (
 <div key={index} className="produclist_divContainer">
 
 <i
@@ -145,16 +149,12 @@ wishlistStatus[product.id] ? "wishlist-active" : ""
 }`}
 />
 
-{/* Link to 
-product details */}
-
 <Link to={`/product/${product.id}`}>
 <img
-src={`http://localhost:3001${product.file_path}`}
+src={`https://lavonne.onrender.com${product.file_path}`}
 alt={product.name}
 />
 </Link>
-
 <div className="padding_contain">
 <div className="flex_inr">
 
@@ -165,8 +165,8 @@ alt={product.name}
 <div className="review_Cntnr">
 <img id="Review_Img"
 src="https://cdn-icons-png.flaticon.com/128/15853/15853959.png"
-loading="lazy"
 alt=""
+loading="lazy"
 ></img>
 <li style={{marginTop : '.5em', marginLeft : '-.2em'}}>|</li>
 <li className="fa_Review">{product.review}</li>
@@ -185,14 +185,16 @@ alt=""
 </section>
 </div>
 
-<div className="header_Filter">
+{/* <div className="header_Filter">
 {" "}
 {showFilters && <Filterheader></Filterheader>}{" "}
-</div>
+</div> */}
+
+<Filterheader></Filterheader>
 
 </div>
 
 );
 };
 
-export default KasturiHaldi;
+export default FruitCake;
