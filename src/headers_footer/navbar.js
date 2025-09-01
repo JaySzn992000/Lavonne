@@ -1,742 +1,633 @@
-/* Done .. */
+import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import NavigationClose from "../Logo/CloseTag.png";
+import LogoNitiArya from "../Logo/LogoNitiArya.png";
+import Cart_Icon from "../Images_ToolsSymbols/Cart_Icon.png"
+import Heart_Icon from "../Images_ToolsSymbols/Heart_Icon.png"
+import User_Icon from "../Images_ToolsSymbols/User_Icon.png"
+import { Helmet } from "react-helmet";
+import "./navbar.css";
 
-/* ... This is 
-for navBar ..  */
+const Navbar = () => {
 
+// Login user 
 
-.navProfile_img{
-color: rgb(255, 255, 255);
-cursor: pointer;
-}
-
-
-.login_please{
-margin: .7em 0em .7em 0em;
-color: rgb(255, 255, 255);
-padding: 17px;
-cursor: pointer;
-}
-
-
-.Product_navbar {
-display: flex;
-justify-content: space-between;
-align-items: center;
-width: 100%;
-height: auto;
-padding: 3px 57px 3px 57px;
-z-index: 99999;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.052);
-background-color: #100424;
-transition: 0.3s;
-}
-
-
-.Product_navbar.scrolled {
-position: fixed;
-top: 0;
-}
-
-
-.Product_navbar .nav_ul {
-display: flex;
-gap: 1.7em;
-margin-left: 1.7em;
-}
-
-
-.div_ul .fa-angle-down {
-margin-top: 0.1em;
-font-size: 1.5rem;
-color: rgb(255, 255, 255);
-}
-
-
-.navSlider_flex .loggedDiv_nameEmail {
-line-height: 1.2em;
-}
-
-.loggedDiv_nameEmail li a {
-    color: rgb(0, 0, 0);
-}
-
-
-.loggedDiv_nameEmail li {
-margin-top: .9em;
-}
-
-
-#CloseTag {
-position: absolute;
-width: 27px;
-margin-top: -0.5em;
-right: 3.7em;
-cursor: pointer;
-}
-
-
-.Product_navbar .flex_nav_ProfileSection .navProfile_img {
-width: 30px;
-cursor: pointer;
-border-radius: 3px;
-padding: 3px;
-filter: invert(1);
-}
-
-
-.Product_navbar .flex_nav_ProfileSection .Nav_sliderIcon {
-width: 30px;
-cursor: pointer;
-border-radius: 3px;
-padding: 3px;
-}
+const [loggedInUser, setLoggedInUser] = useState(null);
+const navigate = useNavigate();
+const location = useLocation();
 
+// Login_system 
+// Locally storage 
 
-.Product_navbar .nav_profileSection li a {
-color: rgb(255, 255, 255);
+useEffect(() => {
+const storedUser = localStorage.getItem("loggedInUser");
+if (storedUser) {
+setLoggedInUser(JSON.parse(storedUser));
 }
-
+}, []);
 
-.Product_navbar .fa-heart {
-font-size: 1.2rem;
-margin-right: 0.9em;
-cursor: pointer;
-}
+// .. It's Saves LoggedIn 
+// User Details in
+// Local Storage of the broswer
+// to save users to Login Again 
 
-.navProduct_Slider li {
-font-size: 0.8rem;
-color: #202434;
-font-family: Verdana, Geneva, Tahoma, sans-serif;
+useEffect(() => {
+if (location.state && location.state.loggedInUser) {
+const user = location.state.loggedInUser;
+setLoggedInUser(user);
+localStorage.setItem("loggedInUser", JSON.stringify(user));
 }
+}, [location.state]);
 
-.Product_navbar .div_ul {
-display: flex;
-align-items: center;
-gap: 0.5em;
-}
+// Wihslist Count
 
-.Product_navbar .div_ul li {
-font-size: 0.8rem;
-}
+// Fetch wishlist 
+// count from localStorage
 
+useEffect(() => {
+const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+setWishlistCount(storedWishlist.length); // Update wishlist count
+}, [location] );
 
-.Product_navbar .div_ul li a {
-color: rgb(255, 255, 255);
-font-size: 0.8rem;
-}
+// Cart Count
+
+// <NaviGate's>
 
+const navigateEcart = () => {
+navigate("/Ecart");
+};
 
-.Product_navbar .logo_img {
-width: 107px;
-height: auto;   
-z-index: 999;
-margin-bottom: .5em;
-margin-left: .7em;
-cursor: pointer;
-}
+const logout = () => {
+setLoggedInUser(null);
+localStorage.removeItem("loggedInUser");
+navigate("/ProductList");
+};
 
+const navi = useNavigate();
 
-.fa_barsLogo_Container {
-display: flex;
-align-items: center;
-gap: 2.1em;
-}
+const naviProductPage = () => {
+navi("/ProductList");
+};
 
+const profileNavi = useNavigate();
 
-.nav_ul i {
-font-size: 0.9rem;
-margin-top: 0.3em;
-transition: 0.5s;
-cursor: pointer;
+const naviReg = useNavigate();
+const naviRegist = () => {
+if (!loggedInUser) {
+naviReg("/Registeration");
+} else if (loggedInUser) {
+profileNavi("/Profile");
 }
+};
 
 
-.nav_ul li a:hover {
-color: #f8a424;
-}
-
+const naviorderhistory = useNavigate();
 
-/* ... This is for nav 
-Profile, heart, 
-Cart ...  Both  */
+const naviHome = useNavigate();
+const navigateHome = () => {
+naviHome("/");
+};
 
+const orderhistory = () => {
+naviorderhistory("/ItemHistory");
+};
 
-.flex_nav_ProfileSection {
-display: flex;
-align-items: center;
-gap: 0.4em;
-}
+const naviheartNavi = useNavigate();
+const heartNavi = () => {
+naviheartNavi("/WishList");
+};
 
-.fa-shopping-cart {
-margin-right: 0.3em;
-margin-left: 0.4em;
-}
+const handleWishlist = () => {
+naviheartNavi("/WishList");
+};
 
-.flex_nav_ProfileSection .nav_profileSection {
-display: flex;
-align-items: center;
-gap: 0.7em;
-}
 
-.flex_nav_ProfileSection .nav_profileSection li a {
-font-size: 0.8rem;
-}
+const naviTshirt = useNavigate();
+const naviGateTshirt = () => {
+naviTshirt("/ChocolateCake");
+};
 
-/* ... This is For
- Search Bar..  */
+const naviShirt = useNavigate();
+const naviGateShirt = () => {
+naviShirt("/CreamCake");
+};
 
-.navProfile_ {
-margin-right: 1.1em;
-}
+const naviJeans = useNavigate();
+const naviGateJeans = () => {
+naviJeans("/FruitCake");
+};
 
-.navProfile_ a {
-color: rgb(255, 255, 255);
-font-size: 0.8rem;
-}
+const naviPants = useNavigate();
+const naviGatePants = () => {
+naviPants("/FestivalCake");
+};
 
+const naviSweaters = useNavigate();
+const naviGateSweaters = () => {
+naviSweaters("/PastryCake");
+};
 
-.flex_nav_ProfileSection .fa-search {
-display: flex;
-justify-content: center;
-align-items: center;
-margin: -0.1em 0em 0em -2.1em;
-font-size: 1.2rem;
-color:#DCDCDC;
-height: 38px;
-z-index: 999;
-cursor: pointer;
-}
+const naviTrouser = useNavigate();
+const naviGateTrousers = () => {
+naviTrouser("/SandalwoodPowder");
+};
 
-.search_products {
-width: 0;
-padding: 11px;
-padding-left: 17px;
-border: none;
-outline: none;
-border-radius: 4px;
-transition: 0.3s;
-background: none;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
-}
+const naviHoodies = useNavigate();
+const naviGateHoodies = () => {
+naviHoodies("/HairGrowth");
+};
 
-.afterSearch_prodct {
-width: 237px;
-border: 1px solid #DCDCDC;
-background-color: rgb(255, 255, 255);
-z-index: 999;
-}
+const naviGate = useNavigate();
+const naviGateBlazer = () => {
+naviGate("/CategoryAavla");
+};
 
+const naviShorts = useNavigate();
+const naviGateShorts = () => {
+naviShorts("/CategoryGhee");
+};
 
-.fa-bars {
-width: 27px;
-cursor: pointer;
-border-radius: 7px;
-color: rgb(255, 255, 255);
-filter: invert(1);
+const naviProfile = useNavigate();
+const navitoAccount = () => {
+naviProfile('/Profile')
 }
-
 
-.navProduct_Slider {
-display: block;
-position: absolute;
-top: 0;
-left: 0;
-width: 321px;
-padding-bottom: 37px;
-max-height: 100vh;
-margin-left: -337px;
-padding-left: 17px;
-padding-right: 27px;
-height: 100vh;
-z-index: 99999;
-text-align: start;
-transition: 0.5s;
-overflow-y: auto;
-background-color: rgb(255, 255, 255);
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.232);
+const naviCart = useNavigate();
+const naviToCartAccount = () => {
+naviCart('/Ecart')
 }
 
 
-.navProduct_Slider::-webkit-scrollbar {
-width: 4px;
+const naviContact = useNavigate();
+const naviToContactus = () => {
+naviContact('/Contactpage')
 }
 
-.navProduct_Slider::-webkit-scrollbar-track {
-background-color: #d6b684;
+const naviAbout = useNavigate()
+const naviToAboutus = () => {
+naviAbout('/Aboutus')
 }
 
-.navProduct_Slider::-webkit-scrollbar-thumb {
-background-color: rgb(255, 255, 255);
-}
-
-.navProduct_Slider::-webkit-scrollbar-thumb:hover {
-background-color: #555;
-cursor: pointer;
-}
 
+const NavitoProductlist = useNavigate()
 
-.navSlider_flex {
-display: flex;
-align-items: center;
-margin: 0.8em 0em 0em 0.9em;
-gap: 1.3em;
-width: 95%;
+const naviToCollection = () => {
+NavitoProductlist('/Productlist')
 }
-
 
-.navSlider_flex .loggedDiv_nameEmail li {
-font-size: 0.9rem;
-line-height: 2.1em;
-word-wrap: break-word;
-word-break: break-word;
-box-sizing: border-box;
-list-style: none;
+const privacyNavi = useNavigate();
+const privacyNavigate = () => {
+privacyNavi('/PrivacyPolicy')
 }
 
-.flex_div_prfle {
-margin-top: 2.7em;
+const navitoLoginPage = useNavigate()
+const naviToLogin = () => {
+navitoLoginPage('/Registeration')
 }
 
+// Open SlideBar 
+// In Media Query 
 
-.flex_div_prfle .flex_icon_ {
-display: flex;
-align-items: center;
-height: 47px;
-gap: 1.3em;
-margin-top: 1.6em;
-margin-left: 0.8em;
-transition: 0.5s;
-}
-
-.flex_div_prfle .flex_icon_ li a {
-color: rgb(0, 0, 0);
-}
+// Function to 
+// open the slider
 
+const clickOpen = () => {
+const slider = document.querySelector(".navProduct_Slider");
 
-.navProduct_Slider.active {
-margin-left: 0;
+if (slider.classList.contains("close")) {
+slider.classList.remove("close");
 }
 
-.navProduct_Slider.close {
-margin-left: -337px;
-}
+slider.classList.add("active");
+};
 
+// Function to 
+// close the slider
 
-.Product_navbar .listing_Products {
-position: absolute;
-left: 0;
-width: 100%;
-height: auto;
-padding: 21px 30px 47px;
-padding-left: 253px;
-text-align: start;
-z-index: 999;
-opacity: 0;
-margin-top: 3.7em;
-line-height: 2.2em;
-background-color: #FFFFFF;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.232);
-pointer-events: none;
-transition: 0.5s;
-}
+const CloseTag = () => {
+const slider = document.querySelector(".navProduct_Slider");
 
-.Product_navbar .hover_products {
-margin-top: 2.4em;
-padding-bottom: 33px;
-z-index: 999;
-}
 
-.Product_navbar .hover_products:hover .listing_Products {
-margin-top: 2.3em;
-opacity: 1;
-pointer-events: auto;
+if (slider.classList.contains("active")) {
+slider.classList.remove("active");
 }
 
+slider.classList.add("close");
+};
 
-.Product_navbar .hover_products .listing_Products li {
-width: 10%;
-margin-top: 0.3em;
-color: white;
-border-bottom: 1px solid rgba(117, 50, 50, 0.192);
-}
+// .. Scroll Effect 
+// , Navbar ... .
 
-
-.Product_navbar .hover_products .listing_Products li a {
-color: #808080;
-}
+const [scrolled, setScrolled] = useState(false);
 
-.Product_navbar .hover_products .listing_Products li a:hover {
-color: #f8a424;
+useEffect(() => {
+const handleScroll = () => {
+if (window.scrollY > 0) {
+setScrolled(true);
+} else {
+setScrolled(false);
 }
+};
 
+window.addEventListener("scroll", handleScroll);
+return () => {
+window.removeEventListener("scroll", handleScroll);
+};
+}, [] );
 
-.wishlist-count {
-position: absolute;
-margin-top: -1.7em;
-margin-left: 1.6em;
-border-radius: 50%;
-padding: 2px 6px;
-font-size: 11px;
-background-color: #f85c74;
-color: rgb(255, 255, 255);
-cursor: pointer;
-}
+const [afterSearch_prodct, setafterSearch_prodct] = useState(false);
+const searchProducts = () => {
+setafterSearch_prodct((prevState) => !prevState);
+};
 
+const [searchQuery, setSearchQuery] = useState("");
 
-.cart-count {
-font-size: 11px;
-padding: 2px 6px;
-cursor: pointer;
-border-radius: 50%;
-margin-top: -1.7em;
-margin-left: -1.4em;
-color: rgb(255, 255, 255);
-background-color: #f85c74;
+const handleKeyDown = (e) => {
+if (e.key === "Enter") {
+navigate(`/ProductList?search=${encodeURIComponent(searchQuery)}`);
 }
-
+};
 
-@media (max-width: 321px) {
-
-#CloseTag {
-position: absolute;
-right: 2.7em;
-}
 
-.flex_nav_ProfileSection .fa-search {
-position: absolute;
-margin-top: -0.1em;
-right: .9em;
-}
+const [wishlistCount, setWishlistCount] = useState(0);
 
-.flex_nav_ProfileSection {
-gap: 1.1em;
-}
+useEffect(() => {
 
-.search_products {
-display: none;
-}
+const updateWishlistCount = () => {
+const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+setWishlistCount(storedWishlist.length);
+};
 
-.afterSearch_prodct {
-display: block;
-position: absolute;
-width: 100%;
-left: 0;
-padding: 11px;
-padding-left: 17px;
-border-radius: 0px;
-border: 1px solid rgb(220, 220, 220);
-}
+const updateCartCount = () => {
+const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+};
 
-.fa_barsLogo_Container {
-gap: 0.2em;
-}
+updateWishlistCount();
+updateCartCount();
 
+window.addEventListener("storage", updateWishlistCount);
+window.addEventListener("storage", updateCartCount);
 
-.Product_navbar .nav_ul {
-display: none;
-}
+return () => {
+window.removeEventListener("storage", updateWishlistCount);
+window.addEventListener("wishlistUpdated", updateWishlistCount);
+window.removeEventListener("storage", updateCartCount);
+};
+}, [] );
 
-.Product_navbar .logo_img {
-width: 97px;
-height: auto;
-}
 
+const cart = useSelector((state) => state.cart);
+const cartCount = cart.length;
 
-.navProduct_Slider {
-width: 90vw;
+const naviGateProductsAll = useNavigate()
+const seeAllProducts = () => {
+naviGateProductsAll('/ProductList')
 }
 
-.flex_div_prfle {
-line-height: 2.5em;
-}
 
-.navSlider_flex .loggedDiv_nameEmail li {
-font-size: 0.8rem;
-}
+return (
 
-.navProduct_Slider li {
-font-size: 0.8rem;
-}
+<div>
 
-.Product_navbar {
-height: 67px;
-}
+<Helmet>
+<title>Niti Arya - Pickles & More</title>
+<meta
+name="description"
+content="Niti Arya offers a variety of pickles including mango, carrot, garlic, and more. Shop now for fresh and delicious pickles."
+/>
+<meta name="keywords" content="Pickles, Mango Pickles, Garlic Pickles, Carrot Pickles, Best Pickles, Niti Arya Pickles" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="http://www.nitiarya.com" />
+</Helmet>
 
+<nav className={`Product_navbar ${scrolled ? "scrolled" : ""}`}>
 
+<div className="fa_barsLogo_Container">
 
-/* This is for
- NavbarSlider */
+<img className="fa fa-bars fa_bars_nav"
+onClick={clickOpen}
+src="https://cdn-icons-png.flaticon.com/128/5259/5259008.png" ></img>
 
-.navProduct_Slider li {
-word-wrap: break-word;
-word-break: break-word;
-}
+<img onClick={navigateHome}
+className="logo_img" src={LogoNitiArya}
+loading="lazy"
+alt=""
+></img>
 
+<ul className="nav_ul">
 
-.flex_div_prfle .flex_icon_ {
-display: flex;
-gap: 1.3em;
-}
+{/*  */}
 
-.navProduct_Slider .navSlider_flex {
-gap: .8em;
-}
+<div className="div_ul">
 
-.Product_navbar .flex_nav_ProfileSection img {
-width: 28px;
-cursor: pointer;
-}
+<li className="hover_products">
 
+<a onClick={naviToCollection}  href="">Cake</a>
 
-.Product_navbar .flex_nav_ProfileSection .fa-shopping-cart {
-margin-left: -4.7em;
-width: 23px;
-}
+<div className="listing_Products">
+<ul>
+<li onClick={naviProductPage}>
+<a href="">Find all Cakes</a>
+</li>
+<li onClick={naviGateTshirt}>
+<a href="">Chocolate Cake</a>
+</li>
+<li onClick={naviGateShirt}>
+<a href="">Cream Cake</a>
+</li>
+<li onClick={naviGateJeans}>
+<a href="">Fruit Cake</a>
+</li>
+<li onClick={naviGatePants}>
+<a href="">Festival Cake</a>
+</li>
 
-/* NavBar 
-SLider */
+<li onClick={naviGateSweaters}>
+<a href="">Pastry Cake</a>
+</li>
 
-.navProduct_Slider .contact-us {
-margin-top: 1.2em;
-}
+{/* <li onClick={naviGateTrousers}>
+<a href="">Sandalwood Powder</a>
+</li>
+<li onClick={naviGateHoodies}>
+<a href="">Hair Growth</a>
+</li> */}
 
-.navProduct_Slider .sign_out {
-margin-top: 1.2em;
-}
+{/* <li onClick={naviGateBlazer}>
+<a href="">Aavla</a>
+</li>
 
-}
+<li onClick={naviGateShorts}>
+<a href="">Ghee</a>
+</li> */}
 
-@media (min-width: 321px) and (max-width: 768px) {
+</ul>
+</div>
+</li>
+<i className="fa fa-angle-down"></i>
+</div>
 
-.fa-bars{
-    margin-right: .5em;
-    width: 24px;
-}
+{/*  */}
 
-.navProduct_Slider {
-width: 307px;
-}
+<ul className="div_ul">
+<li onClick={naviToAboutus}>
+<a href="">About us</a>
+</li>
+<i className="fa fa-angle-down"></i>
+</ul>
 
-#CloseTag {
-position: absolute;
-margin-top: -0.2em;
-margin-right: -0.7em;
-}
+{/*  */}
 
-.search_products {
-display: none;
-}
+<ul className="div_ul">
+<li onClick={naviToContactus}>
+<a href="">Contact</a>
+</li>
+<i className="fa fa-angle-down"></i>
+</ul>
 
+{/*  */}
 
-.flex_nav_ProfileSection .fa-search {
-position: absolute;
-margin-top: -0.1em;
-right: 1.3em;
-font-size: 1rem;
-}
+</ul>
+</div>
 
-.flex_nav_ProfileSection {
-gap: 0em;
-}
+{/*  */}
 
-.fa_barsLogo_Container {
-display: flex;
-align-items: center;
-gap: 0.2em;
-}
+<div className="flex_nav_ProfileSection">
 
-.Product_navbar .nav_ul {
-display: none;
-}
+<ul className="nav_profileSection">
 
+<img 
+onClick={heartNavi}
+className="navProfile_img fa fa-heart"
+src={Heart_Icon}
+></img>
 
+{wishlistCount > 0 && (
+<span className="wishlist-count">{wishlistCount}</span>
+)}
 
-.navProduct_Slider .navSlider_flex .loggedDiv_nameEmail li {
-font-size: 0.8rem;
-word-wrap: break-word;
-word-break: break-word;
-}
 
-.flex_div_prfle .flex_icon_ {
-gap: 1.3em;
-}
+<img 
+onClick={naviRegist}
+className="navProfile_img user_right fa fa-user"
+src={User_Icon}
+></img>
 
 
-.flex_div_prfle {
-line-height: 2.4em;
-}
+<ul>
+<li onClick={naviRegist}>
+<a href="">MY ACCOUNT</a>
+</li>
+</ul>
 
+</ul>
 
-.Product_navbar .flex_nav_ProfileSection img {
-width: 24px;
-cursor: pointer;
-}
 
-.navProduct_Slider .navSlider_flex {
-display: flex;
-gap: 0.7em;
-margin-top: 1.3em;
-}
+<img
+src={Cart_Icon}
+onClick={navigateEcart}
+className="fa fa-shopping-cart navProfile_img"
+></img>
 
 
-.Product_navbar .logo_img {
-width: 104px;
-height: auto;
-padding: 5px;
-}
+{cartCount > 0 && <span className="cart-count">{cartCount}</span>}
 
-/* NavBar SLider */
+<ul>
+<li className="navProfile_">
+<a href="">MY CART</a>
+</li>
+</ul>
 
-.navProduct_Slider .contact-us {
-margin-top: 1.2em;
-}
+<input
+type="text"
+value={searchQuery}
+onChange={(e) => setSearchQuery(e.target.value)}
+onKeyDown={handleKeyDown}
+className={`search_products ${
+afterSearch_prodct ? "afterSearch_prodct" : ""
+}`}
+placeholder="Search For Items..."
+>
+</input>
 
-.navProduct_Slider .sign_out {
-margin-top: 1.2em;
-}
+<i onClick={searchProducts} className="fa fa-search"></i>
 
-}
+<div>
 
+<ul className="navProduct_Slider">
+{loggedInUser ? (
+<div>
+<div className="flex_div_prfle">
 
-@media (max-width: 768px) {
+{/*  */}
 
+<img
+src={NavigationClose}
+onClick={CloseTag}
+id="CloseTag"
+alt=""
+loading="lazy"
+className="Nav_sliderIcon"
+></img>
 
-.flex_div_prfle {
-line-height: 2.9em;
-}
+{/*  */}
 
-.Product_navbar {
-display: flex;
-justify-content: space-between;
-padding-left: 0;
-}
+<div className="flex_icon_">
 
+<img
+style={{ marginLeft: ".4em" }}
+src="https://cdn-icons-png.flaticon.com/128/456/456283.png"
+alt=""
+loading="lazy"
+className="Nav_sliderIcon"
+/>
 
-.flex_nav_ProfileSection .nav_profileSection li {
-display: none;
-}
+<li onClick={navitoAccount} style={{ marginLeft: "-.5em" }}>
+<a href="">MY ACCOUNT</a>
+</li>
+</div>
+</div>
 
-.flex_nav_ProfileSection .navProfile_ {
-display: none;
-}
+<div className="navSlider_flex">
 
-.flex_nav_ProfileSection .nav_profileSection {
-gap: 0.6em;
-}
+<img
+src="https://cdn-icons-png.flaticon.com/128/3059/3059486.png"
+alt=""
+loading="lazy"
+className="Nav_sliderIcon"
+/>
 
-.fa-shopping-cart {
-margin-right: 0.7em;
-margin-left: 0.1em;    
-}
+<div className="loggedDiv_nameEmail">
+<li>
+<a href="#">Hi {loggedInUser.name}</a>
+</li>
+<li>
+<a href="#">{loggedInUser.email}</a>
+</li>
+</div>
+</div>
 
 
-.fa_barsLogo_Container {
-display: flex;
-align-items: center;
-margin-left: 1.3em;
-}
+<div className="flex_div_prfle">
+<div className="flex_icon_">
+<img
+src="https://cdn-icons-png.flaticon.com/128/1170/1170678.png"
+className="img_pf Nav_sliderIcon"
+alt=""
+loading="lazy"
+/>
 
+<li onClick={naviToCartAccount}>
+<a href="">SHOP</a>
+</li>
+</div>
 
-.fa_bars_nav {
-display: block;
-font-size: 1.3rem;
-color: rgb(255, 255, 255);
-}
 
+<div className="flex_icon_">
+<img style={{width : '27px'}}
+src="https://cdn-icons-png.flaticon.com/128/7278/7278792.png"
+className="img_pf Nav_sliderIcon"
+alt=""
+loading="lazy"
+/>
 
-.search_products {
-display: none;
-}
 
-.afterSearch_prodct {
-display: block;
-position: absolute;
-padding: 12px;
-padding-left: 27px;
-width: 100%;
-left: 0;
-border-radius: 0px;
-border-left: none;
-border-right: none;
-border: 1px solid #dcdcdc;
-}
+<li onClick={seeAllProducts}>
+<a href="">See All Pickles</a>
+</li>
 
-}
+</div>
 
+{/*  */}
 
-@media (min-width: 769px) and (max-width: 932px) {
+<div className="flex_icon_">
+<img
+src="https://cdn-icons-png.flaticon.com/128/2822/2822682.png"
+className="img_pf Nav_sliderIcon"
+alt=""
+loading="lazy"
+/>
 
-.navProduct_Slider {
-overflow-y: auto;
-}
+<li onClick={orderhistory}>
+<a href="">ORDER HISTORY</a>
+</li>
+</div>
 
-.flex_nav_ProfileSection .fa-search {
-position: absolute;
-margin-top: -0.1em;
-right: 1.6em;
-}
+{/*  */}
 
+<div className="flex_icon_">
 
-.search_products {
-display: none;
-}
+<img
+src="https://cdn-icons-png.flaticon.com/128/1077/1077035.png"
+className="img_pf Nav_sliderIcon"
+alt=""
+loading="lazy"
+/>
 
-.afterSearch_prodct {
-display: block;
-position: absolute;
-padding: 11px;
-padding-left: 17px;
-width: 100%;
-left: 0;
-border-radius: 0px;
-border-left: none;
-border-right: none;
-border: 1px solid #DCDCDC;
-}
+<li onClick={handleWishlist}>
+<a href="">WISHLIST</a>
+</li>
 
-.flex_nav_ProfileSection .fa-search {
-margin: 0.1em 0.1em 0em 0em;
-}
+</div>
 
-}
+{/*  */}
 
+<div className="flex_icon_ contact-us">
+<img
+src="https://cdn-icons-png.flaticon.com/128/11980/11980549.png"
+className="img_pf Nav_sliderIcon"
+alt=""
+loading="lazy"
+/>
 
-@media (min-width: 769px) and (max-width: 1024px) {
+<li onClick={naviToContactus}>
+<a href="">CONTACT US</a>
+</li>
+</div>
 
-.flex_div_prfle {
-line-height: 2.9em;
-}
+{/*  */}
 
-.Product_navbar {
-display: flex;
-justify-content: space-between;
-}
+<div className="flex_icon_">
+<img
+src="https://cdn-icons-png.flaticon.com/128/10348/10348976.png"
+className="img_pf Nav_sliderIcon"
+alt=""
+loading="lazy"
+/>
+<li onClick={privacyNavigate}>
+<a href="">PRIVACY POLICY</a>
+</li>
+</div>
 
-.Product_navbar .nav_ul {
-display: none;
-}
+{/*  */}
 
-.Product_navbar .logo_img {
-width: 141px;
-height: auto;
-}
+<div className="sign_out flex_icon_">
+<img
+src="https://cdn-icons-png.flaticon.com/128/4034/4034329.png"
+className="img_pf Nav_sliderIcon"
+alt=""
+loading="lazy"
+/>
+<li onClick={logout}>
+<a href="#">SIGN OUT</a>
+</li>
+</div>
+</div>
+</div>
+) : (
+<p onClick={naviToLogin} className="login_please">Please Login</p>
+)}
+</ul>
+</div>
+</div>
 
-.flex_nav_ProfileSection {
-display: flex;
-align-items: center;
-}
+</nav>
 
-.flex_nav_ProfileSection .nav_profileSection {
-display: flex;
-align-items: center;
-}
+</div>
 
-.navProduct_Slider .contact-us {
-margin-top: 1.2em;
-}
+);
 
-.navProduct_Slider .sign_out {
-margin-top: 1.2em;
-}
+};
 
-}
+export default Navbar;
