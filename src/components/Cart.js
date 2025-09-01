@@ -33,7 +33,7 @@ useEffect(() => {
 const fetchProductData = async () => {
 try {
 const response = await axios.get(
-"https://namasyaa.onrender.com/fetchProductslist"
+"https://lavonne-0729.onrender.com/fetchProductslist"
 );
 setProductData(response.data);
 } catch (error) {
@@ -78,7 +78,7 @@ quantities,
 
 const getProductImagePath = (productId) => {
 const product = productData.find((p) => p.id === productId);
-return product ? `https://namasyaa.onrender.com${product.file_path}` : "";
+return product ? `https://lavonne-0729.onrender.com${product.file_path}` : "";
 };
 
 
