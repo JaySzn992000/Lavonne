@@ -86,6 +86,7 @@ width: 303px;
 border: 1px solid #808080;
 padding: 11px;
 padding-left: 45px;
+border-radius: 23px;
 }
 
 .pincode_flex {
@@ -170,15 +171,15 @@ width: 287px;
 height: 51px;
 border: none;
 font-size: 0.9rem;
-border-radius: 2px;
+border-radius: 23px;
 cursor: pointer;
 }
 
 /*  */
 
 .product-details .add_crt {
-background-color: #f88c74;
-color:  rgb(0, 0, 0);
+background-color: #f85c74;
+color: rgb(255, 255, 255);
 }
 
 
