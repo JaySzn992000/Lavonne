@@ -105,27 +105,27 @@ naviheartNavi("/WishList");
 
 const naviTshirt = useNavigate();
 const naviGateTshirt = () => {
-naviTshirt("/AloeVeraGel");
+naviTshirt("/ChocolateCake");
 };
 
 const naviShirt = useNavigate();
 const naviGateShirt = () => {
-naviShirt("/BananaPowder");
+naviShirt("/CreamCake");
 };
 
 const naviJeans = useNavigate();
 const naviGateJeans = () => {
-naviJeans("/BeetrootPowder");
+naviJeans("/FruitCake");
 };
 
 const naviPants = useNavigate();
 const naviGatePants = () => {
-naviPants("/KasturiHaldi");
+naviPants("/FestivalCake");
 };
 
 const naviSweaters = useNavigate();
 const naviGateSweaters = () => {
-naviSweaters("/LicoricePowder");
+naviSweaters("/PastryCake");
 };
 
 const naviTrouser = useNavigate();
@@ -328,29 +328,31 @@ alt=""
 <div className="listing_Products">
 <ul>
 <li onClick={naviProductPage}>
-<a href="">Saree</a>
+<a href="">Find all Cakes</a>
 </li>
 <li onClick={naviGateTshirt}>
-<a href="">Aloe Vera Gel</a>
+<a href="">Chocolate Cake</a>
 </li>
 <li onClick={naviGateShirt}>
-<a href="">Banana Powder</a>
+<a href="">Cream Cake</a>
 </li>
 <li onClick={naviGateJeans}>
-<a href="">Beetroot Powder</a>
+<a href="">Fruit Cake</a>
 </li>
 <li onClick={naviGatePants}>
-<a href="">Kasturi Haldi</a>
+<a href="">Festival Cake</a>
 </li>
+
 <li onClick={naviGateSweaters}>
-<a href="">Licorice Powder</a>
+<a href="">Pastry Cake</a>
 </li>
-<li onClick={naviGateTrousers}>
+
+{/* <li onClick={naviGateTrousers}>
 <a href="">Sandalwood Powder</a>
 </li>
 <li onClick={naviGateHoodies}>
 <a href="">Hair Growth</a>
-</li>
+</li> */}
 
 {/* <li onClick={naviGateBlazer}>
 <a href="">Aavla</a>
