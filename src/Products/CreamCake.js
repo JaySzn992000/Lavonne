@@ -10,7 +10,7 @@ import "./Categoriesfruits.css";
 import { Helmet } from "react-helmet";
 
 
-const BananaPowder = ({ showFilters = true, limit }) => {
+const CreamCake = ({ showFilters = true, limit }) => {
 
 const [allProducts, setAllProducts] = useState([]); 
 const [filteredProducts, setFilteredProducts] = useState([]); 
@@ -191,14 +191,16 @@ alt=""
 </section>
 </div>
 
-<div className="header_Filter">
+{/* <div className="header_Filter">
 {" "}
 {showFilters && <Filterheader></Filterheader>}{" "}
-</div>
+</div> */}
+
+<Filterheader></Filterheader>
 
 </div>
 
 );
 };
 
-export default BananaPowder;
+export default CreamCake;
