@@ -28,7 +28,7 @@ useEffect(() => {
 const customerFetch = async () => {
 try {
 const response = await fetch(
-"https://namasyaa.onrender.com/historyfetchcustomer"
+"https://lavonne-0729.onrender.com/historyfetchcustomer"
 );
 const data = await response.json();
 if (loggedInUser) {
