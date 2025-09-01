@@ -8,7 +8,7 @@ import axios from "axios";
 import "./Categoriesfruits.css";
 import { Helmet } from "react-helmet";
 
-const LicoricePowder = ({ showFilters = true, limit }) => {
+const Pastrycake = ({ showFilters = true, limit }) => {
 
 const [allProducts, setAllProducts] = useState([]); 
 const [filteredProducts, setFilteredProducts] = useState([]); // Store 
@@ -19,7 +19,7 @@ const query = new URLSearchParams(location.search).get("search"); // Extract
 
 useEffect(() => {
 axios
-.get("https://namasyaa.onrender.com/fetchProductslistPants")
+.get("https://lavonne.onrender.com/fetchProductslistPants")
 .then((response) => {
 console.log("Fetched Lemon Pickles products:", response.data); 
 setAllProducts(response.data); // Set all products
@@ -38,7 +38,7 @@ console.error("Error fetching Lemon Pickles products:", error);
 useEffect(() => {
 if (query) {
 axios
-.get("https://namasyaa.onrender.com/fetchProductslist", {
+.get("https://lavonne.onrender.com/fetchProductslist", {
 params: { search: query },
 })
 
@@ -161,7 +161,7 @@ product details */}
 
 <Link to={`/product/${product.id}`}>
 <img
-src={`http://localhost:3001${product.file_path}`}
+src={`https://lavonne.onrender.com${product.file_path}`}
 alt={product.name}
 />
 </Link>
@@ -195,14 +195,16 @@ loading="lazy"
 </section>
 </div>
 
-<div className="header_Filter">
+{/* <div className="header_Filter">
 {" "}
 {showFilters && <Filterheader></Filterheader>}{" "}
-</div>
+</div> */}
+
+<Filterheader></Filterheader>
 
 </div>
 
 );
 };
 
-export default LicoricePowder;
+export default Pastrycake;
