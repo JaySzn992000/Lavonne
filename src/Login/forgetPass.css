@@ -1,0 +1,65 @@
+
+.message_forget p {
+color:#FF0000;
+width: 25%;
+margin: auto;
+line-height: 2.3em;
+margin-top: 2.1em;
+font-size: .9rem;
+}
+
+#logged_form input{
+padding: 11px;
+width: 100%;
+border: 0.5px solid #DCDCDC;
+}
+
+.forgetflex{
+flex-direction: column;
+width: 305px;
+line-height: 1.1em !important;
+}
+
+#logged_form button {
+width: 45%;
+margin-top: -.2em;
+}
+
+#logged_form h2 {
+font-size: 1.2rem;
+}
+
+#very_btn {
+margin-bottom: .7em;
+}
+
+#logged_form h4 {
+font-size: .9rem;
+}
+
+
+
+@media (max-width : 1500px) {
+
+.message_forget p {
+margin-top: 1.9em;
+width: 80%;
+line-height: 2.3em;
+color:#FF0000;
+}
+
+#logged_form h2 {
+font-size: 1.1rem;
+}
+
+#logged_form input {
+width: 100%;
+padding: 7px;
+padding-left: 11px;
+}
+
+#very_btn {
+margin-top: 2.1em !important;
+}
+
+}

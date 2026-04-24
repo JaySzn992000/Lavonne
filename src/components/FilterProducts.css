@@ -1,0 +1,38 @@
+
+.main_layout {
+display: flex;
+align-items: flex-start;
+gap: 20px;
+}
+
+.filters {
+width: 300px;
+flex-shrink: 0;
+}
+
+.products_wrapper {
+flex: 1;
+min-width: 0;
+}
+
+
+@media (max-width: 768px) {
+
+.main_layout {
+flex-direction: column;
+}
+
+.filter_absolute {
+position: absolute;
+}
+
+.products_wrapper {
+width: 100%;
+z-index: -999;
+}
+
+.flex_productlist {
+grid-template-columns: repeat(2, 1fr);
+}
+
+}
