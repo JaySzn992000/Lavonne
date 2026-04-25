@@ -1,22 +1,17 @@
-import React from "react";
 import "./Topnav.css";
-import { FaWhatsapp, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 const Topnav = () => {
 
 return (
 
+<div>
+
 <div className="topnav">
-
-<div className="topnav-left">
-<p>20% off upto 2000 Rs</p>
+<div className="topnav-center">
+<li><a>Up to 30% OFF - Limited Time Only | Shop Now</a></li>
+</div>
 </div>
 
-<div className="topnav-right">
-<a  rel="noreferrer"><FaWhatsapp /></a>
-<a rel="noreferrer"><FaFacebookF /></a>
-<a  rel="noreferrer"><FaLinkedinIn /></a>
-</div>
 </div>
 
 );

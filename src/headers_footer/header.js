@@ -87,7 +87,6 @@ exclusive offers.</p>
 <li><a>Phone: +91 91115 74281</a></li>
 </ul>
 
-
 <ul>
 <h4>CUSTOMER SERVICES</h4>
 <li onClick={returnPolicyNavi}><a>Return Policy</a></li>

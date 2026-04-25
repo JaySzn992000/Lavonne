@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import Navbar from "../headers_footer/navbar";
 import Header from "../headers_footer/header";
-import BottomFavcomp from "../componentsBoot/bottomFavcomp";
 import SlidCakeImg from "../Slider/CakeSlide.jpg";
 import Namasyaa from "../Slider/namasyaa.jpg";
 import Contactus from "./Contactus";
 import Slider from "../slider";
 import { Helmet } from "react-helmet";
 import emailjs from "emailjs-com";
-import Pickles from "../Products/Pickle";
 import Topnav from "../headers_footer/Topnav";
 import VideoSliderComponent from "../videoslider";
 import "./ProductListmodule.css";
@@ -78,6 +76,7 @@ return (
 <div>
 
 <Topnav></Topnav>
+
 <Navbar />
 
 <div className="Catelog_Items">
@@ -200,15 +199,9 @@ alt="Sudh Ghee"></img>
 
 <VideoSliderComponent></VideoSliderComponent>
 
-<button onClick={seeAllProducts} className="seeLLProducts">View All</button>
-
-<div id="bottomFav_comp">
-<BottomFavcomp />
-</div>
-
-<div className="tshirt_Left">
+{/* <div className="tshirt_Left">
 <Pickles showFilters={showFilters} limit={5}></Pickles>
-</div>
+</div> */}
 
 <button onClick={seeAllProducts} 
 className="seeLLProducts">View All</button>
@@ -240,7 +233,7 @@ your special moments unforgettable.
 <img src={Namasyaa}
 loading="lazy"
 alt="Variety of Homemade Pickles"
-className="DlvyImg"
+id="DlvyImg"
 ></img>
 
 </div>
@@ -248,9 +241,8 @@ className="DlvyImg"
 <img src={SlidCakeImg}
 loading="lazy"
 alt="Variety of Homemade Pickles"
-className="DlvyImg"
+className="Cakebanner"
 ></img>
-
 
 <div className="subscribe_kk">
 

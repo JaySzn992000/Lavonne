@@ -5,8 +5,8 @@ width: 80%;
 margin: auto;
 justify-content: center;
 gap: 1.7em;
-margin-top: 4.1em;
-margin-bottom: 3.3em;
+margin-top: 1.7em;
+margin-bottom: 1.1em;
 flex-wrap: nowrap;
 overflow: hidden;
 }
@@ -16,8 +16,8 @@ margin-top: 4.7em;
 }
 
 .Catelog_Items img {
-width: 107px;
-height: 107px;
+width: 121px;
+height: 121px;
 border: 1px solid #DCDCDC;
 border-radius: 50%;
 cursor: pointer;
@@ -27,6 +27,10 @@ cursor: pointer;
 line-height: 2.3em;
 text-align: center;
 flex-shrink: 0;
+}
+
+.Catelog_Items h4{
+color: #000;
 }
 
 .password-field {
@@ -152,6 +156,18 @@ margin-top: 2.1em;
 
 .Secure_ordering p {
 padding: 1.5em;
+}
+
+#DlvyImg {
+height: 100vh;
+height: 35vh;
+object-fit: cover;
+}
+
+.Cakebanner {
+width: 100%;
+height: 75vh;
+object-fit: contain;
 }
 
 .success_message {
@@ -302,6 +318,18 @@ margin-bottom: 3.1em;
 
 .Secure_ordering img {
 width: 100%;
+}
+
+#DlvyImg{
+height: 45vh;
+object-fit: cover;
+object-position: 85% center;
+border: 1px solid black;
+}
+
+.Cakebanner{
+height: 45vh;
+object-fit: cover;
 }
 
 .img_bannerOne {
