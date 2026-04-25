@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet";
 import emailjs from "emailjs-com";
 import Topnav from "../headers_footer/Topnav";
 import VideoSliderComponent from "../videoslider";
+import Pickle from "../Products/Pickle";
 import "./ProductListmodule.css";
 import "./Home.css";
 
@@ -200,7 +201,7 @@ alt="Sudh Ghee"></img>
 <VideoSliderComponent></VideoSliderComponent>
 
 <div className="tshirt_Left">
-<Pickles showFilters={showFilters} limit={5}></Pickles>
+<Pickle showFilters={showFilters} limit={5}></Pickle>
 </div>
 
 <button onClick={seeAllProducts} 
