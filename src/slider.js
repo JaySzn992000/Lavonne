@@ -33,13 +33,14 @@ return (
 <img src={img1} alt="Summer Collection Sofa" />
 
 <div className="slide_text">
-<h2>Cozy Living Room Sofas</h2>
+
+<h2>Delicious & Fresh Cakes</h2>
 <p>
-Bring warmth and luxury to your living room with our high-end sofa designs.
-Premium quality materials with elegant craftsmanship.
+Indulge in our freshly baked cakes made with premium ingredients.
+Perfect for every celebration with rich taste and elegant designs.
 </p>
+
 <div className="button_group">
-<button className="btn_primary">Explore Collection →</button>
 <button className="btn_secondary">Shop Now</button>
 </div>
 </div>
@@ -51,13 +52,14 @@ Premium quality materials with elegant craftsmanship.
 <img src={img2} alt="Elegant Dining Room" />
 
 <div className="slide_text">
-<h2>Elegant Dining Room</h2>
+
+<h2>Elegant Cake Collection</h2>
 <p>
-Enhance your dining experience with intelligently designed furniture.
-Modern aesthetics meet ultimate comfort and functionality.
+Enhance your celebrations with beautifully crafted cakes.
+Modern designs meet rich flavors and premium quality ingredients.
 </p>
+
 <div className="button_group">
-<button className="btn_primary">Explore Collection →</button>
 <button className="btn_secondary">View Details</button>
 </div>
 </div>

@@ -238,11 +238,24 @@ id="DlvyImg"
 
 </div>
 
-<img src={SlidCakeImg}
+<div className="cake_banner_wrapper">
+
+<img
+src={SlidCakeImg}
 loading="lazy"
-alt="Variety of Homemade Pickles"
+alt="Delicious Cakes"
 className="Cakebanner"
-></img>
+/>
+
+<div className="cake_overlay"></div>
+
+<div className="cake_content">
+<h1>Delicious Cakes</h1>
+<p>Freshly baked with love & premium ingredients</p>
+<button>Order Now</button>
+</div>
+
+</div>
 
 <div className="subscribe_kk">
 
