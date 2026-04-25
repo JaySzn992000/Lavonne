@@ -199,9 +199,9 @@ alt="Sudh Ghee"></img>
 
 <VideoSliderComponent></VideoSliderComponent>
 
-{/* <div className="tshirt_Left">
+<div className="tshirt_Left">
 <Pickles showFilters={showFilters} limit={5}></Pickles>
-</div> */}
+</div>
 
 <button onClick={seeAllProducts} 
 className="seeLLProducts">View All</button>
@@ -243,16 +243,15 @@ id="DlvyImg"
 <img
 src={SlidCakeImg}
 loading="lazy"
-alt="Delicious Cakes"
-className="Cakebanner"
-/>
+alt="Variety of Homemade Pickles"
+className="Cakebanner"/>
 
 <div className="cake_overlay"></div>
 
 <div className="cake_content">
-<h1>Delicious Cakes</h1>
-<p>Freshly baked with love & premium ingredients</p>
-<button>Order Now</button>
+<h1>Homemade Pickles</h1>
+<p>Pure desi taste with authentic village recipes.</p>
+<button>Shop Now</button>
 </div>
 
 </div>
