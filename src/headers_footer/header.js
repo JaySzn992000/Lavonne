@@ -46,6 +46,7 @@ const Faqs = () => {
 MyFaqs('/FAQs')
 }
 
+
 return (
 
 <div>
