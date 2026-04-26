@@ -61,7 +61,7 @@ import Chilli from "./Products/FestivalCake";
 import CreamCake from "./components/cream-cakes";
 import Flexproducts from "./components/flexproducts";
 import Allproducts from "./components/allproducts";
-import Collections from "./components/collections";
+import Collections from "./components/Collections";
 import Newarrivalcakesfetch from "./components/newarrivalcakesfetch";
 import Newarrivalcakes from "./components/new-arrival-cakes";
 import FruiteCake from "./Products/fruit-cakes";
@@ -81,7 +81,7 @@ return (
 <Routes>
 <Route path="/Login" element={<Login />} />
 <Route path="/allproducts" element={<Allproducts />} />
-<Route path="/collections" element={<Collections />} />
+<Route path="/Collections" element={<Collections />} />
 <Route path="/cream-cakes" element={<CreamCake />} />
 <Route path="/newarrivalcakesfetch" element={<Newarrivalcakesfetch />} />
 <Route path="/new-arrival-cakes" element={<Newarrivalcakes />} />
