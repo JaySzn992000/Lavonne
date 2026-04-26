@@ -81,7 +81,7 @@ return (
 <Routes>
 <Route path="/Login" element={<Login />} />
 <Route path="/allproducts" element={<Allproducts />} />
-<Route path="/Collections" element={<Collections />} />
+<Route path="/collections" element={<Collections />} />
 <Route path="/cream-cakes" element={<CreamCake />} />
 <Route path="/newarrivalcakesfetch" element={<Newarrivalcakesfetch />} />
 <Route path="/new-arrival-cakes" element={<Newarrivalcakes />} />
