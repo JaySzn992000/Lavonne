@@ -8,7 +8,7 @@ return (
 
 <div className="topnav">
 <div className="topnav-center">
-<li><a>Limited Time Only | Shop Now</a></li>
+<li><a> Limited Time Only | Shop Now </a></li>
 </div>
 </div>
 
