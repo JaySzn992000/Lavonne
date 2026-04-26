@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./OccasionSection.css";
 
 const data = [
@@ -18,6 +19,8 @@ img: "https://cremecastle.in/cdn/shop/files/C3715PPH_f0feb380-2267-4276-9f2b-028
 
 const OccasionSection = () => {
 
+const navigate = useNavigate();
+
 return (
 
 <div className="occasion_container">
@@ -33,7 +36,7 @@ return (
 
 <div className="occasion_content">
 <h3>{item.title}</h3>
-<button>View More Cakes</button>
+<button onClick={() => navigate("/collections")}>View More Cakes</button>
 </div>
 </div>
 ))}

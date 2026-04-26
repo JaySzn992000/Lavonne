@@ -25,12 +25,12 @@ import Navbar from "./headers_footer/navbar";
 import Home from "./components/Home";
 import ChocolateCake from "./Products/ChocolateCake";
 import Creamcakefetch from "./Products/creamcakefetch";
-import Contactus from "./components/Contactus";
+import Contactus from "./components/contact-us";
 import VideoSliderComponent from "./videoslider";
 import PastryCake from "./Products/PastryCake";
-import Aboutus from "./components/about";
-import Contactpage from "./components/Contactpage";
-import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import Aboutus from "./components/about-us";
+import Contactpage from "./components/contact-us";
+import PrivacyPolicy from "./Pages/privacy-policy";
 import Shipping from "./Pages/Shipping";
 import AdminProfile from "./AdminProfile";
 import { useState } from "react";
@@ -48,8 +48,8 @@ import HairGrowth from "./Products/HairGrowth";
 import SandalwoodPowder from "./Products/SandalwoodPowder";
 import CategoryGhee from "./Products/CategoryGhee";
 import Pickles from "./Products/Pickle";
-import TermsCondition from "./Pages/TermsCondition";
-import ReturnPolicy from "./Pages/ReturnPolicy";
+import TermsCondition from "./Pages/terms-condition";
+import ReturnPolicy from "./Pages/return-policy";
 import AdminUsers from "./AdminUsers";
 import UsersDetails from "./UsersDetails";
 import LineChart from "./DashboardADmin/LineChart";
@@ -61,7 +61,7 @@ import Chilli from "./Products/FestivalCake";
 import CreamCake from "./components/cream-cakes";
 import Flexproducts from "./components/flexproducts";
 import Allproducts from "./components/allproducts";
-import Collections from "./components/Collections";
+import Collections from "./components/collections";
 import Newarrivalcakesfetch from "./components/newarrivalcakesfetch";
 import Newarrivalcakes from "./components/new-arrival-cakes";
 import FruiteCake from "./Products/fruit-cakes";
@@ -125,12 +125,12 @@ return (
 <Route path="/Contactus" element={<Contactus />} />
 <Route path="/Message" element={<Message />} />
 <Route path="/VideoSliderComponent" element={<VideoSliderComponent />} />
-<Route path="/Aboutus" element={<Aboutus />} />
-<Route path="/Contactpage" element={<Contactpage />} />
+<Route path="/about-us" element={<Aboutus />} />
+<Route path="/contact-us" element={<Contactpage />} />
 <Route path="/Shipping" element={<Shipping />} />
-<Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-<Route path="/TermsCondition" element={<TermsCondition />} />
-<Route path="/ReturnPolicy" element={<ReturnPolicy />} />
+<Route path="/privacy-policy" element={<PrivacyPolicy />} />
+<Route path="/terms-condition" element={<TermsCondition />} />
+<Route path="/return-policy" element={<ReturnPolicy />} />
 <Route path="/AdminProfile" element={<AdminProfile />} />
 <Route path="/products/:category/:id" element={<ProductDetails />} />
 <Route path="/AdminUsers" element={<AdminUsers />} />

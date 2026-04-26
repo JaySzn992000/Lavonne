@@ -141,15 +141,15 @@ navi("/streax");
 };
 
 const naviToBathBody = () => {
-navi('/Contactpage')
+navi('/contact-us')
 }
 
 const naviToShoes = () => {
-navi('/Aboutus')
+navi('/about-us')
 }
 
 const naviToSkinCare = () => {
-navi('/Collections')
+navi('/collections')
 }
 
 const naviToMakeup = () => {
@@ -319,7 +319,6 @@ alt=""
 </li>
 </div>
 
-
 {/* 4TH HOVER */}
 
 <div className="div_ul">
@@ -351,7 +350,7 @@ alt=""
 <img
 src={Heart}
 onClick={heartNavi}
-className="navProfile_img fa fa-heart"
+className="navProfile_img fa fa-heart invert"
 ></img>
 
 {wishlistCount > 0 && (
@@ -360,7 +359,7 @@ className="navProfile_img fa fa-heart"
 
 <img
 onClick={naviRegist}
-className="navProfile_img user_right fa fa-user"
+className="navProfile_img user_right fa fa-user invert"
 src={User}
 ></img>
 
@@ -376,8 +375,9 @@ src={User}
 <img
 src={Cart}
 onClick={navigateEcart}
-className="fa fa-shopping-cart navProfile_img"
+className="fa fa-shopping-cart navProfile_img invert"
 ></img>
+
 {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
 </div>
 
@@ -394,8 +394,7 @@ onKeyDown={handleKeyDown}
 className={`search_products ${
 afterSearch_prodct ? "afterSearch_prodct" : ""
 }`}
-placeholder="Search Our Product"
-/>
+placeholder="Search Our Product"/>
 
 <img
 src={Search}

@@ -1,6 +1,7 @@
 import Slider from "react-slick";
 import img1 from "./Slider/1.img.jpg";
 import img2 from "./Slider/2.img.jpg";
+import { useNavigate } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slider.css";
@@ -20,6 +21,9 @@ fade: true,
 pauseOnHover: true,
 dotsClass: "custom-dots",
 };
+
+const navigate = useNavigate();
+
 
 return (
 
@@ -42,7 +46,13 @@ Perfect for every celebration with rich taste and elegant designs.
 </p>
 
 <div className="button_group">
-<button className="btn_secondary">Shop Now</button>
+
+<button 
+className="btn_secondary" 
+onClick={() => navigate("/collections")}>
+Shop Now
+</button>
+
 </div>
 </div>
 </div>
@@ -61,7 +71,11 @@ Modern designs meet rich flavors and premium quality ingredients.
 </p>
 
 <div className="button_group">
-<button className="btn_secondary">View Details</button>
+<button 
+className="btn_secondary"
+onClick={() => navigate("/about-us")}>
+View Details
+</button>
 </div>
 </div>
 </div>

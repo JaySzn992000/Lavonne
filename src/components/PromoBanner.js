@@ -1,9 +1,12 @@
 import React from "react";
 import "./PromoBanner.css";
+import { useNavigate } from "react-router";
 import Banner from '../Slider/Banner1.jpeg'
 import BannerHim from '../Slider/Banner2.jpeg'
 
 const PromoBanner = () => {
+
+const navigate = useNavigate();
 
 return (
 
@@ -15,7 +18,9 @@ return (
 <div className="promo_content">
 <span>Cakes for Her</span>
 <h2>Elegance, in every slice.</h2>
-<button>Shop Now</button>
+<button onClick={() => navigate("/collections")}>
+Shop Now
+</button>
 </div>
 </div>
 
@@ -25,7 +30,9 @@ return (
 <div className="promo_content">
 <span>Cakes for Him</span>
 <h2>Celebration, with character.</h2>
-<button>Shop Now</button>
+<button onClick={() => navigate("/collections")}>
+Shop Now
+</button>
 </div>
 </div>
 

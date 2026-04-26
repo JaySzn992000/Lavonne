@@ -41,12 +41,12 @@ color: #fff;
 color: #fff;
 margin-top: 0.7rem;
 line-height: 1.7;
-font-size: .9rem;
+font-size: 1rem;
 padding-top: 1em;
 }
 
 .normal_header .nMheader_dvLogo {
-width: 117px;
+width: 187px;
 margin-top: 1rem;
 margin-left: -.5em;
 }
@@ -108,6 +108,42 @@ color: #fff;
 
 .div_header button:hover {
 border: 0.5px solid #fff; 
+}
+
+.footer_bottom {
+width: 100%;
+padding: 17px 20px;
+border-top: 1px solid #333;
+text-align: left;
+}
+
+.footer_bottom p {
+color: #ccc;
+font-size: 14px;
+margin: 0;
+}
+
+@media (max-width: 768px) {
+
+.footer_bottom {
+padding: 12px 15px;
+}
+
+.footer_bottom p {
+font-size: 13px;
+}
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+.footer_bottom {
+padding: 10px;
+}
+
+.footer_bottom p {
+font-size: 12px;
+line-height: 1.4;
+}
 }
 
 

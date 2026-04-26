@@ -15,7 +15,6 @@ cake3,
 cake4,
 ];
 
-
 return (
 
 <div>

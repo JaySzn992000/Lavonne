@@ -73,6 +73,8 @@ const seeAllProducts = () => {
 naviGateProductsAll('/collections')
 }
 
+const navigate = useNavigate();
+
 
 return (
 
@@ -254,9 +256,11 @@ className="Cakebanner"/>
 <div className="cake_overlay"></div>
 
 <div className="cake_content">
-<h1>Homemade Pickles</h1>
-<p>Pure desi taste with authentic village recipes.</p>
-<button>Shop Now</button>
+<h1>Premium Cakes</h1>
+<p>Freshly baked cakes crafted with love for every special moment.</p>
+<button onClick={() => navigate("/collections")}>
+Shop Now
+</button>
 </div>
 
 </div>

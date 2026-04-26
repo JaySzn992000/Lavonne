@@ -18,27 +18,27 @@ NavitoProductlist('/collections')
 
 const naviAbout = useNavigate()
 const naviToAboutus = () => {
-naviAbout('/aboutus')
+naviAbout('/about-us')
 }
 
 const naviContact = useNavigate();
 const naviToContactus = () => {
-naviContact('/Contactpage')
+naviContact('/contact-us')
 }
 
 const privacyNavi = useNavigate();
 const privacyNavigate = () => {
-privacyNavi('/PrivacyPolicy')
+privacyNavi('/privacy-policy')
 }
 
 const returnPolicy = useNavigate();
 const returnPolicyNavi = () => {
-returnPolicy('/ReturnPolicy')
+returnPolicy('/return-policy')
 }
 
 const termsAndCOndition = useNavigate();
 const termsAndCOnditionNavi = () => {
-termsAndCOndition('/TermsCondition')
+termsAndCOndition('/terms-condition')
 }
 
 const MyFaqs = useNavigate()
@@ -74,7 +74,7 @@ exclusive offers.</p>
 </div>
 
 <ul>
-<h4>ABOUT KIMIRICA</h4>
+<h4>ABOUT</h4>
 <li onClick={naviToCollection}><a>Shop our Products</a></li>
 <li onClick={naviToAboutus}><a>About us</a></li>
 <li onClick={naviToContactus}><a>Contact us</a></li>
@@ -94,6 +94,11 @@ exclusive offers.</p>
 </ul>
 
 </div>
+
+<div className="footer_bottom">
+<p>© 2026 Json Softech. All Rights Reserved.</p>
+</div>
+
 </header>
 </div>
 
