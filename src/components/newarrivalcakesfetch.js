@@ -20,7 +20,7 @@ JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
 
 axios
-.get("http://localhost:3001/fetchProductslist")
+.get("https://lavonne-0729.onrender.com/fetchProductslist")
 .then((response) => {
 setArrayStore(response.data);
 setFilteredProducts(response.data);
@@ -37,7 +37,7 @@ const query = new URLSearchParams(location.search).get("search");
 useEffect(() => {
 if (query) {
 axios
-.get("http://localhost:3001/fetchProductslist", {
+.get("https://lavonne-0729.onrender.com/fetchProductslist", {
 params: { search: query },
 })
 .then((response) => {
@@ -49,7 +49,7 @@ console.error("Error fetching products:", error);
 });
 } else {
 axios
-.get("http://localhost:3001/fetchProductslist")
+.get("https://lavonne-0729.onrender.com/fetchProductslist")
 .then((response) => {
 setAllProducts(response.data);
 setFilteredProducts(response.data);
@@ -133,7 +133,7 @@ wishlistStatus[productlist.id] ? "wishlist-active" : ""
 <Link to={`/products/${slugify(productlist.name)}/${productlist.id}`}>
 
 <img
-src={`http://localhost:3001/${productlist.file_path}`}
+src={`https://lavonne-0729.onrender.com/${productlist.file_path}`}
 alt={productlist.name}
 loading="lazy"
 />

@@ -20,27 +20,6 @@ return (
 
 <div>
 
-<Helmet>
-<title>What Our Fans Say - Video Testimonials</title>
-<meta
-name="description"
-content="Watch video testimonials from our fans and hear about their experiences."
-/>
-<meta
-property="og:title"
-content="What Our Fans Say - Video Testimonials"
-/>
-<meta
-property="og:description"
-content="Watch video testimonials from our fans and hear about their experiences."
-/>
-<meta property="og:type" content="video.other" />
-<meta
-property="og:url"
-content="https://yourwebsite.com/what-our-fans-say"
-/>
-</Helmet>
-
 <div className="video_container">
 <h2>NEW ARRIVALS - Cakes</h2>
 <section className="video_section_flex">

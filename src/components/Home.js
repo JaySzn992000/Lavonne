@@ -13,6 +13,8 @@ import VideoSliderComponent from "../videoslider";
 import Pickle from "../Products/Pickle";
 import "./ProductListmodule.css";
 import "./Home.css";
+import PromoBanner from "./PromoBanner";
+import OccasionSection from "./OccasionSection";
 
 
 const Home = () => {
@@ -199,6 +201,8 @@ alt="Sudh Ghee"></img>
 </div>
 
 <VideoSliderComponent></VideoSliderComponent>
+<OccasionSection></OccasionSection>
+<PromoBanner></PromoBanner>
 
 <div className="tshirt_Left">
 <Pickle showFilters={showFilters} limit={5}></Pickle>

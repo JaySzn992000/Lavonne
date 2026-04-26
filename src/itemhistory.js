@@ -92,7 +92,7 @@ Purchase History ({quantities.length})
 <td>
 {item.file_path && (
 <img
-src={`http://localhost:3001${item.file_path}`}
+src={`https://lavonne-0729.onrender.com${item.file_path}`}
 alt={item.productname}
 className="custorders-imageItem"
 />

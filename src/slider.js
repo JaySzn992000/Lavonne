@@ -28,6 +28,7 @@ return (
 <Slider {...settings}>
 
 <div className="slide">
+
 <div className="slide_overlay"></div>
 
 <img src={img1} alt="Summer Collection Sofa" />

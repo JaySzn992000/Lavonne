@@ -57,6 +57,7 @@ return;
 }
 
 try {
+
 const response = await fetch("https://lavonne-0729.onrender.com/registerAdmin", {
 method: "POST",
 headers: {

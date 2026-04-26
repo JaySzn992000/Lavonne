@@ -276,6 +276,7 @@ alt=""
 
 <li className="hover_products">
 <a onClick={naviToStoreBrand}  href="">Collections</a>
+<img src="https://cdn-icons-png.flaticon.com/128/892/892498.png"></img>
 </li>
 
 </div>
@@ -286,7 +287,7 @@ alt=""
 
 <li className="hover_products">
 <a onClick={naviToSkinCare}  href="">Cake</a>
-
+<img src="https://cdn-icons-png.flaticon.com/128/892/892498.png"></img>
 <div className="listing_Products">
 <ul>
 <li onClick={naviToTops}>
@@ -298,6 +299,7 @@ alt=""
 </li>
 <li onClick={naviToWomenTshirts}>
 <a href="">New Arrivals Cake</a>
+
 </li>
 
 </ul>
@@ -324,6 +326,7 @@ alt=""
 
 <li className="hover_products">
 <a onClick={naviToShoes}  href="">About Us</a>
+<img src="https://cdn-icons-png.flaticon.com/128/892/892498.png"></img>
 </li>
 </div>
 

@@ -34,15 +34,13 @@ display: none;
 }
 
 .video_section_flex video {
-width: 285px;
+width: 325px;
 height: auto;
 object-fit: cover;
 flex-shrink: 0; 
 scroll-snap-align: start;
-border-radius: 3px;
+border-radius: 11px;
 }
-
-/* Arrows */
 
 .slider-btn {
 position: absolute;

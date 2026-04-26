@@ -26,7 +26,7 @@ const [pincode, setPincode] = useState("");
 const [message, setMessage] = useState("");
 
 useEffect(() => {
-fetch(`http://localhost:3001/products/${id}`)
+fetch(`https://lavonne-0729.onrender.com/products/${id}`)
 .then(res => res.json())
 .then(data => {
 });
@@ -36,7 +36,7 @@ useEffect(() => {
 const fetchProduct = async () => {
 try {
 const response = await axios.get(
-"http://localhost:3001/fetchProductslist"
+"https://lavonne-0729.onrender.com/fetchProductslist"
 );
 const data = response.data;
 const product = data.find((product) => product.id === parseInt(id));

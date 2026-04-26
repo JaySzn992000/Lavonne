@@ -1,0 +1,78 @@
+
+.promo_container {
+display: flex;
+gap: 20px;
+padding: 20px;
+width: 88%;
+margin: auto;
+margin-top: 2.7em;
+}
+
+.promo_card {
+position: relative;
+flex: 1;
+height: 300px;
+border-radius: 11px;
+overflow: hidden;
+cursor: pointer;
+}
+
+.promo_card img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.5s ease;
+}
+
+.promo_card:hover img {
+transform: scale(1.08);
+}
+
+.promo_overlay {
+position: absolute;
+inset: 0;
+background: rgba(0,0,0,0.25);
+}
+
+.promo_card.dark .promo_overlay {
+background: rgba(0,0,0,0.5);
+}
+
+.promo_content {
+position: absolute;
+bottom: 30px;
+left: 30px;
+color: #fff;
+}
+
+.promo_content span {
+font-size: 12px;
+opacity: 0.8;
+}
+
+.promo_content h2 {
+font-size: 1.8rem;
+margin: 8px 0;
+}
+
+.promo_content button {
+padding: 13px 21px;
+border: none;
+border-radius: 20px;
+background: #fff;
+cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+
+.promo_container {
+width: 100%;
+flex-direction: column;
+}
+
+.promo_card {
+height: 220px;
+}
+
+}
