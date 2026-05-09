@@ -20,7 +20,7 @@ JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
 
 axios
-.get("https://lavonne-0729.onrender.com/fetchProductslist")
+.get("https://lavonne-0729.onrender.com/fetchnewarrivalcake")
 .then((response) => {
 setArrayStore(response.data);
 setFilteredProducts(response.data);
@@ -37,7 +37,7 @@ const query = new URLSearchParams(location.search).get("search");
 useEffect(() => {
 if (query) {
 axios
-.get("https://lavonne-0729.onrender.com/fetchProductslist", {
+.get("https://lavonne-0729.onrender.com/fetchnewarrivalcake", {
 params: { search: query },
 })
 .then((response) => {
@@ -49,7 +49,7 @@ console.error("Error fetching products:", error);
 });
 } else {
 axios
-.get("https://lavonne-0729.onrender.com/fetchProductslist")
+.get("https://lavonne-0729.onrender.com/fetchnewarrivalcake")
 .then((response) => {
 setAllProducts(response.data);
 setFilteredProducts(response.data);

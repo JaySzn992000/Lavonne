@@ -133,8 +133,7 @@ wishlistStatus[productlist.id] ? "wishlist-active" : ""
 <img
 src={productlist.file_path}
 alt={productlist.name}
-loading="lazy"
-/>
+loading="lazy" />
 
 </Link>
 

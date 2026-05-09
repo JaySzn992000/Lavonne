@@ -15,14 +15,13 @@ const [wishlistStatus, setWishlistStatus] = useState({});
 const [cartCount, setCartCount] = useState(0);
 const [arrayStore, setArrayStore] = useState([]);
 
-
 useEffect(() => {
 const storedWishlistStatus =
 JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
 
 axios
-.get("https://lavonne-0729.onrender.com/fetchProductslist")
+.get("https://lavonne-0729.onrender.com/fetchcream")
 .then((response) => {
 setArrayStore(response.data);
 setFilteredProducts(response.data);
@@ -39,7 +38,7 @@ const query = new URLSearchParams(location.search).get("search");
 useEffect(() => {
 if (query) {
 axios
-.get("https://lavonne-0729.onrender.com/fetchProductslist", {
+.get("https://lavonne-0729.onrender.com/fetchcream", {
 params: { search: query },
 })
 .then((response) => {
@@ -51,7 +50,7 @@ console.error("Error fetching products:", error);
 });
 } else {
 axios
-.get("https://lavonne-0729.onrender.com/fetchProductslist")
+.get("https://lavonne-0729.onrender.com/fetchcream")
 .then((response) => {
 setAllProducts(response.data);
 setFilteredProducts(response.data);
@@ -62,7 +61,6 @@ console.error("Error fetching all products:", error);
 }
 }, [query] );
 
-
 const sendToWishlist = (product) => {
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const productIndex = wishlist.findIndex((item) => item.id === product.id);
@@ -72,7 +70,6 @@ wishlist.push(product);
 } else {
 wishlist.splice(productIndex, 1);
 }
-
 
 localStorage.setItem("wishlist", JSON.stringify(wishlist));
 

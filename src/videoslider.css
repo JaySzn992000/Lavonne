@@ -39,7 +39,7 @@ height: auto;
 object-fit: cover;
 flex-shrink: 0; 
 scroll-snap-align: start;
-border-radius: 11px;
+border-radius: 5px;
 }
 
 .slider-btn {
