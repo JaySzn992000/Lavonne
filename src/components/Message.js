@@ -9,7 +9,7 @@ const [showForm, setShowForm] = useState(false);
 const [formData, setFormData] = useState({
 name: "",
 email: "",
-recipientEmail: "nitiarya655@gmail.com",
+recipientEmail: "jay.k.992000@gmail.com",
 message: "",
 });
 
@@ -52,7 +52,7 @@ response.text
 setFormData({
 name: "",
 email: "",
-recipientEmail: "nitiarya655@gmail.com",
+recipientEmail: "jay.k.992000@gmail.com",
 message: "",
 });
 setSuccessMessage("Message has been sent successfully!");

@@ -9,7 +9,7 @@ display: flex;
 justify-content: center;
 align-items: flex-start;
 text-align: start;
-gap: 6.5vw;        
+gap: 6.5vw;
 padding: 3em 2rem;
 padding-bottom: 71px;
 width: 100%;
@@ -123,6 +123,7 @@ font-size: 14px;
 margin: 0;
 }
 
+
 @media (max-width: 768px) {
 
 .footer_bottom {
@@ -134,8 +135,9 @@ font-size: 13px;
 }
 }
 
-/* Mobile */
+
 @media (max-width: 480px) {
+
 .footer_bottom {
 padding: 10px;
 }
@@ -144,8 +146,8 @@ padding: 10px;
 font-size: 12px;
 line-height: 1.4;
 }
-}
 
+}
 
 
 @media (max-width: 925px) {

@@ -25,7 +25,7 @@ naviGateEdit("/EditProfile");
 const logout = () => {
 setLoggedInUser(null);
 localStorage.removeItem("loggedInUser");
-navigate("/ProductList");
+navigate("/Collections");
 };
 
 const navigate = useNavigate();
@@ -54,10 +54,6 @@ return (
 {loggedInUser && loggedInUser.name && (
 
 <>
-
-{/* <div className="circle_pr">
-<h1 className="prname">{loggedInUser.name.charAt(0)}</h1>
-</div> */}
 
 <div className="edit_flex">
 

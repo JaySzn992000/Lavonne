@@ -167,7 +167,6 @@ overflow: hidden;
 
 .Cakebanner {
 width: 100%;
-height: 100%;
 object-fit: cover;
 }
 
@@ -207,31 +206,8 @@ background: #f2f2f2;
 }
 
 
-@media (max-width: 768px) {
-
-.cake_banner_wrapper {
-height: 80vh;
-}
-
-.cake_content {
-left: 5%;
-right: 5%;
-text-align: center;
-}
-
-.cake_content h1 {
-font-size: 2rem;
-}
-
-.cake_content p {
-font-size: 1rem;
-}
-
-}
-
 .Cakebanner {
 width: 100%;
-height: 75vh;
 object-fit: contain;
 }
 
@@ -239,6 +215,7 @@ object-fit: contain;
 position: relative;
 width: 100%;
 height: 70vh;
+text-align: start;
 overflow: hidden;
 }
 
@@ -319,10 +296,7 @@ font-size: 1rem;
 
 }
 
-.success_message {
-margin-bottom: 0.7em;
-color:#ff0000;
-}
+
 
 .subscribe_k {
 display: flex;
@@ -332,7 +306,7 @@ margin: auto;
 margin-top: 8.7em;
 margin-bottom: -3.5em;
 width: 75%;
-padding: 11px 21px 7px 27px;
+padding: 21px 21px 11px 27px;
 position: relative;
 border: 0.5px solid #edebeb;
 background-color: #fff;
@@ -367,14 +341,20 @@ border-radius: 27px;
 outline: none;
 border: none;
 height: 48px;
-padding-left: 27px;
+padding-left: 21px;
 }
 
 .subscribe_flx {
 display: flex;
 gap: 0.7em;
-line-height: 2.5em;
+line-height: 2.2em;
 text-align: start;
+}
+
+
+.success_message {
+color:#ff0000;
+margin-bottom: .5em;
 }
 
 .subscribe_flx button {
@@ -387,6 +367,10 @@ border: 0.5px solid #dcdcdc;
 
 
 @media (max-width: 768px) {
+
+.success_message {
+margin-top: 0em;
+}
 
 .subscribe_k {
 width: 93%;
@@ -467,6 +451,10 @@ margin-bottom: 3.1em;
 
 .Secure_ordering img {
 width: 100%;
+}
+
+.Secure_ordering h2 {
+font-size: 1.3rem;
 }
 
 .Cakebanner{

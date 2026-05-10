@@ -15,6 +15,7 @@ import "./ProductListmodule.css";
 import "./Home.css";
 import PromoBanner from "./PromoBanner";
 import OccasionSection from "./OccasionSection";
+import Message from "./Message";
 
 
 const Home = () => {
@@ -59,7 +60,7 @@ email: "",
 recipientEmail: "nitiarya655@gmail.com",
 message: "",
 });
-setSuccessMessage("Message sent successfully!");
+setSuccessMessage("Thanks for subscribing!");
 },
 (err) => {
 console.error("Failed to send email. Error:", err);
@@ -265,19 +266,6 @@ Shop Now
 
 </div>
 
-<div className="subscribe_kk">
-
-<form onSubmit={sendEmail}>
-
-{successMessage && (
-<p className="success_message">{successMessage}</p>
-
-)}
-
-</form>
-
-</div>
-
 <div className="subscribe_k">
 
 <div className="subscribe_flx">
@@ -294,9 +282,10 @@ alt="" loading="lazy" />
 
 <form onSubmit={sendEmail}>
 
+<div className="subscribe_container">
+
 {successMessage && (
 <p className="success_message">{successMessage}</p>
-
 )}
 
 <div className="subscribe_flx">
@@ -314,6 +303,8 @@ message: e.target.value,
 })
 } required />
 <button type="submit">Subscribe</button>
+
+</div>
 
 </div>
 

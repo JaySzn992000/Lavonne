@@ -17,7 +17,7 @@ return (
 <div className="promo_overlay"></div>
 <div className="promo_content">
 <span>Cakes for Her</span>
-<h2>Elegance, in every slice.</h2>
+<h2>Elegance, in every slice</h2>
 <button onClick={() => navigate("/collections")}>
 Shop Now
 </button>
@@ -29,7 +29,7 @@ Shop Now
 <div className="promo_overlay"></div>
 <div className="promo_content">
 <span>Cakes for Him</span>
-<h2>Celebration, with character.</h2>
+<h2>Celebration, with character</h2>
 <button onClick={() => navigate("/collections")}>
 Shop Now
 </button>
