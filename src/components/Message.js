@@ -34,7 +34,6 @@ to_name: formData.name,
 reply_to: formData.email,
 };
 
-
 emailjs
 .send(
 process.env.REACT_APP_EMAILJS_SERVICE_ID,

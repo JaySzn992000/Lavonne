@@ -5,7 +5,7 @@ import Navbar from "../headers_footer/navbar";
 import axios from "axios";
 import "../components/ProductListmodule.css";
 
-const Newarrivalcakesfetch = ({ products }) => {
+const Newarrivalcakesfetch = ({ products, filter }) => {
 
 const [filteredProducts, setFilteredProducts] = useState([]);
 const [allProducts, setAllProducts] = useState([]);
@@ -31,13 +31,12 @@ console.error("Error fetching data:", error);
 });
 }, [] );
 
-
 const location = useLocation();
 const query = new URLSearchParams(location.search).get("search");
 useEffect(() => {
 if (query) {
 axios
-.get("https://lavonne-0729.onrender.com/fetchnewarrivalcake", {
+.get("https://lavonne-0729.onrender.com/fetchProductslist", {
 params: { search: query },
 })
 .then((response) => {
@@ -49,7 +48,7 @@ console.error("Error fetching products:", error);
 });
 } else {
 axios
-.get("https://lavonne-0729.onrender.com/fetchnewarrivalcake")
+.get("https://lavonne-0729.onrender.com/fetchProductslist")
 .then((response) => {
 setAllProducts(response.data);
 setFilteredProducts(response.data);
@@ -60,6 +59,30 @@ console.error("Error fetching all products:", error);
 }
 }, [query] );
 
+
+useEffect(() => {
+
+if (!allProducts.length) return;
+
+let updatedProducts = [...allProducts];
+
+if (filter.selectedNames?.length > 0) {
+
+updatedProducts = updatedProducts.filter((product) =>
+filter.selectedNames.includes(product.category)
+);
+
+}
+
+updatedProducts = updatedProducts.filter(
+(product) =>
+product.price >= filter.minPrice &&
+product.price <= filter.maxPrice
+);
+
+setFilteredProducts(updatedProducts);
+
+}, [filter, allProducts]);
 
 const sendToWishlist = (product) => {
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];

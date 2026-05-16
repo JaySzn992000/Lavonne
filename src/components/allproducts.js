@@ -7,7 +7,7 @@ import axios from "axios";
 import "./ProductListmodule.css";
 import Header from "../headers_footer/header";
 
-const Allproducts = ({ products }) => {
+const Allproducts = ({ products, filter }) => {
 
 const [filteredProducts, setFilteredProducts] = useState([]);
 const [allProducts, setAllProducts] = useState([]);
@@ -61,6 +61,32 @@ console.error("Error fetching all products:", error);
 });
 }
 }, [query] );
+
+
+useEffect(() => {
+
+if (!allProducts.length) return;
+
+let updatedProducts = [...allProducts];
+
+if (filter.selectedNames?.length > 0) {
+
+updatedProducts = updatedProducts.filter((product) =>
+filter.selectedNames.includes(product.category)
+);
+
+}
+
+updatedProducts = updatedProducts.filter(
+(product) =>
+product.price >= filter.minPrice &&
+product.price <= filter.maxPrice
+);
+
+setFilteredProducts(updatedProducts);
+
+}, [filter, allProducts]);
+
 
 const sendToWishlist = (product) => {
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];

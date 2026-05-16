@@ -6,7 +6,7 @@ import axios from "axios";
 import { Helmet } from "react-helmet";
 import "../components/ProductListmodule.css";
 
-const Fruitcakefetch = ({ products }) => {
+const Fruitcakefetch = ({ products, filter }) => {
 
 const [filteredProducts, setFilteredProducts] = useState([]);
 const [allProducts, setAllProducts] = useState([]);
@@ -39,7 +39,7 @@ const query = new URLSearchParams(location.search).get("search");
 useEffect(() => {
 if (query) {
 axios
-.get("https://lavonne-0729.onrender.com/fetchfruit", {
+.get("https://lavonne-0729.onrender.com/fetchProductslist", {
 params: { search: query },
 })
 .then((response) => {
@@ -51,7 +51,7 @@ console.error("Error fetching products:", error);
 });
 } else {
 axios
-.get("https://lavonne-0729.onrender.com/fetchfruit")
+.get("https://lavonne-0729.onrender.com/fetchProductslist")
 .then((response) => {
 setAllProducts(response.data);
 setFilteredProducts(response.data);
@@ -61,6 +61,30 @@ console.error("Error fetching all products:", error);
 });
 }
 }, [query] );
+
+useEffect(() => {
+
+if (!allProducts.length) return;
+
+let updatedProducts = [...allProducts];
+
+if (filter.selectedNames?.length > 0) {
+
+updatedProducts = updatedProducts.filter((product) =>
+filter.selectedNames.includes(product.category)
+);
+
+}
+
+updatedProducts = updatedProducts.filter(
+(product) =>
+product.price >= filter.minPrice &&
+product.price <= filter.maxPrice
+);
+
+setFilteredProducts(updatedProducts);
+
+}, [filter, allProducts]);
 
 
 const sendToWishlist = (product) => {

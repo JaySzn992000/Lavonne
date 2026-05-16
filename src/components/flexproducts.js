@@ -12,18 +12,18 @@ const Flexproducts = ({ type }) => {
 
 const [allProducts, setAllProducts] = useState([]);
 
-const [filter, setFilter] = useState({  
-search: "",
-price: 1000,
+const [filter, setFilter] = useState({
+selectedNames: [],
+minPrice: 0,
+maxPrice: 100000,
 });
-
-// ✅ filter update handler
 
 const handleFilterUpdate = (newFilter) => {
 setFilter((prev) => ({
 ...prev,
 ...newFilter,
 }));
+
 };
 
 return (
