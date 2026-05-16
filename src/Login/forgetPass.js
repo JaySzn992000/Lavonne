@@ -190,8 +190,6 @@ onClick={() => setShowPassword(!showPassword)}>
 
 </div>
 
-<br/>
-
 <h4>Retype Password</h4>
 
 <div className="password-field">
