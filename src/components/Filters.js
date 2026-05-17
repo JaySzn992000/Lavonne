@@ -120,7 +120,7 @@ style={{ width: "90%" }} />
 
 <div>
 {[
-"ChocolateCake",
+"Chocolate Cake",
 "Cream Cake",
 "Fruit Cake",
 "Festival Cake",
