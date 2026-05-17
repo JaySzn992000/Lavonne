@@ -74,7 +74,7 @@ if (filter?.selectedNames?.length > 0) {
 updatedProducts = updatedProducts.filter((product) =>
 filter.selectedNames.some(
 (name) =>
-product.img?.toLowerCase().includes(name.toLowerCase())
+name.toLowerCase() === product.img.toLowerCase()
 )
 );
 
