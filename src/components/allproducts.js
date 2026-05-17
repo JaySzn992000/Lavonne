@@ -69,10 +69,13 @@ if (!allProducts.length) return;
 
 let updatedProducts = [...allProducts];
 
-if (filter.selectedNames?.length > 0) {
+if (filter?.selectedNames?.length > 0) {
 
 updatedProducts = updatedProducts.filter((product) =>
-filter.selectedNames.includes(product.category)
+filter.selectedNames.some(
+(name) =>
+product.img?.toLowerCase().includes(name.toLowerCase())
+)
 );
 
 }
