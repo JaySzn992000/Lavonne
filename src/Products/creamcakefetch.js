@@ -21,7 +21,7 @@ JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
 
 axios
-.get("https://lavonne-0729.onrender.com/fetchProductslist")
+.get("https://lavonne-0729.onrender.com/fetchcreamcake")
 .then((response) => {
 setArrayStore(response.data);
 setFilteredProducts(response.data);
@@ -38,7 +38,7 @@ const query = new URLSearchParams(location.search).get("search");
 useEffect(() => {
 if (query) {
 axios
-.get("https://lavonne-0729.onrender.com/fetchProductslist", {
+.get("https://lavonne-0729.onrender.com/fetchcreamcake", {
 params: { search: query },
 })
 .then((response) => {
@@ -50,7 +50,7 @@ console.error("Error fetching products:", error);
 });
 } else {
 axios
-.get("https://lavonne-0729.onrender.com/fetchProductslist")
+.get("https://lavonne-0729.onrender.com/fetchcreamcake")
 .then((response) => {
 setAllProducts(response.data);
 setFilteredProducts(response.data);
@@ -67,10 +67,13 @@ if (!allProducts.length) return;
 
 let updatedProducts = [...allProducts];
 
-if (filter.selectedNames?.length > 0) {
+if (filter?.selectedNames?.length > 0) {
 
 updatedProducts = updatedProducts.filter((product) =>
-filter.selectedNames.includes(product.category)
+filter.selectedNames.some(
+(name) =>
+name.toLowerCase() === product.img.toLowerCase()
+)
 );
 
 }
@@ -181,7 +184,7 @@ wishlistStatus[productlist.id] ? "wishlist-active" : ""
 <Link to={`/products/${slugify(productlist.name)}/${productlist.id}`}>
 
 <img
-src={`https://lavonne-0729.onrender.com/${productlist.file_path}`}
+src={productlist.file_path}
 alt={productlist.name}
 loading="lazy"
 />

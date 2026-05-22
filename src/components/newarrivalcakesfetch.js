@@ -66,10 +66,13 @@ if (!allProducts.length) return;
 
 let updatedProducts = [...allProducts];
 
-if (filter.selectedNames?.length > 0) {
+if (filter?.selectedNames?.length > 0) {
 
 updatedProducts = updatedProducts.filter((product) =>
-filter.selectedNames.includes(product.category)
+filter.selectedNames.some(
+(name) =>
+name.toLowerCase() === product.img.toLowerCase()
+)
 );
 
 }
@@ -156,7 +159,7 @@ wishlistStatus[productlist.id] ? "wishlist-active" : ""
 <Link to={`/products/${slugify(productlist.name)}/${productlist.id}`}>
 
 <img
-src={`https://lavonne-0729.onrender.com/${productlist.file_path}`}
+src={productlist.file_path}
 alt={productlist.name}
 loading="lazy"
 />

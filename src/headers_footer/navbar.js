@@ -264,24 +264,23 @@ loading="lazy"
 alt=""
 ></img>
 
-
 {/* 1ST HOVER */}
 
-<div className="div_ul">
+{/* <div className="div_ul">
 
 <li className="hover_products">
 <a onClick={naviToStoreBrand}  href="">Collections</a>
 <img src="https://cdn-icons-png.flaticon.com/128/892/892498.png"></img>
 </li>
 
-</div>
+</div> */}
 
 {/* 3RD HOVER */}
 
 <div className="div_ul">
 
 <li className="hover_products">
-<a onClick={naviToSkinCare}  href="">Cake</a>
+<a onClick={naviToSkinCare}  href="">Collections</a>
 <img src="https://cdn-icons-png.flaticon.com/128/892/892498.png"></img>
 <div className="listing_Products">
 <ul>

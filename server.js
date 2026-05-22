@@ -9,7 +9,7 @@ const fs = require("fs");
 const cloudinary = require("cloudinary").v2;
 const app = express(); 
 
-  
+
 require("dotenv").config();
 const pool = require("./config");
 
@@ -802,7 +802,7 @@ app.get("/fetchfruit", async (req, res) => {
 const query = `
 SELECT *
 FROM _imgproduct
-WHERE img ILIKE '%fruit%'
+WHERE img ILIKE '%fruit cake%'
 `;
 
 try {
@@ -855,6 +855,25 @@ res.json(result.rows);
 console.error("Error fetching data:", err.message);
 res.status(500).json({ error: "Database query failed" });
 }
+});
+
+
+app.get("/fetchcreamcake", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%cream cake%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
 });
 
 

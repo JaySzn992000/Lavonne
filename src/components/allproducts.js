@@ -17,22 +17,22 @@ const [cartCount, setCartCount] = useState(0);
 const [arrayStore, setArrayStore] = useState([]);
 
 
-useEffect(() => {
-const storedWishlistStatus =
-JSON.parse(localStorage.getItem("wishlistStatus")) || {};
-setWishlistStatus(storedWishlistStatus);
+// useEffect(() => {
+// const storedWishlistStatus =
+// JSON.parse(localStorage.getItem("wishlistStatus")) || {};
+// setWishlistStatus(storedWishlistStatus);
 
-axios
-.get("https://lavonne-0729.onrender.com/fetchProductslist")
-.then((response) => {
-setArrayStore(response.data);
-setFilteredProducts(response.data);
-})
+// axios
+// .get("https://lavonne-0729.onrender.com/fetchProductslist")
+// .then((response) => {
+// setArrayStore(response.data);
+// setFilteredProducts(response.data);
+// })
 
-.catch((error) => {
-console.error("Error fetching data:", error);
-});
-}, [] );
+// .catch((error) => {
+// console.error("Error fetching data:", error);
+// });
+// }, [] );
 
 const location = useLocation();
 const query = new URLSearchParams(location.search).get("search");
