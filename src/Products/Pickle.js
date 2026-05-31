@@ -49,6 +49,13 @@ const handleFilterUpdate = (filteredData) => {
 setFilteredProducts(filteredData);
 };
 
+useEffect(() => {
+const storedWishlistStatus =
+JSON.parse(localStorage.getItem("wishlistStatus")) || {};
+
+setWishlistStatus(storedWishlistStatus);
+}, [] );
+
 const limitedProducts = filteredProducts.slice(0, limit);
 
 const [wishlistStatus, setWishlistStatus] = useState({});
